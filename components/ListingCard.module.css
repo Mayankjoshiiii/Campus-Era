@@ -1,0 +1,146 @@
+.card {
+  display: flex; 
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
+  backdrop-filter: blur(12px);
+  text-decoration: none;
+  color: inherit;
+  /* Ensures cards don't grow too wide on large screens */
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+:global(.dark) .card:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+.imgWrap {
+  position: relative;
+  /* Fixed aspect ratio prevents images from stretching */
+  aspect-ratio: 16 / 10; 
+  overflow: hidden;
+  background: var(--surface2);
+}
+
+.img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .img { 
+  transform: scale(1.05); 
+}
+
+.rating {
+  position: absolute; 
+  top: 12px; 
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  color: #FBBF24; 
+  font-size: 0.75rem; 
+  font-weight: 700;
+  padding: 0.35rem 0.6rem; 
+  border-radius: 8px;
+  display: flex; 
+  align-items: center; 
+  gap: 4px;
+}
+
+.badge {
+  position: absolute; 
+  bottom: 12px; 
+  left: 12px;
+  padding: 0.3rem 0.75rem; 
+  border-radius: 6px;
+  font-size: 0.7rem; 
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(8px);
+}
+
+.pgBadge   { background: rgba(37, 99, 235, 0.9);  color: white; }
+.messBadge { background: rgba(249, 115, 22, 0.9); color: white; }
+
+.body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.4rem; 
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; 
+  font-weight: 700;
+  color: var(--text); 
+  line-height: 1.3;
+  /* Truncates long titles to 2 lines */
+  display: -webkit-box; 
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+}
+
+.loc {
+  display: flex; 
+  align-items: center; 
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem; 
+  color: var(--text-muted);
+}
+
+.loc svg { 
+  flex-shrink: 0; 
+  color: var(--accent); 
+  width: 14px;
+  height: 14px;
+}
+
+.footer {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  margin-top: auto; 
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.2rem; 
+  font-weight: 800; 
+  letter-spacing: -0.01em;
+}
+
+.pgPrice   { color: var(--primary); }
+.messPrice { color: var(--accent);  }
+
+.unit { 
+  font-family: var(--font-body);
+  font-size: 0.75rem; 
+  font-weight: 500; 
+  color: var(--text-subtle); 
+  margin-left: 2px; 
+}
+
+.reviews { 
+  font-family: var(--font-body);
+  font-size: 0.75rem; 
+  color: var(--text-subtle); 
+}
