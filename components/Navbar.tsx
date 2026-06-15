@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useDarkMode } from "./DarkModeProvider";
 import styles from "./Navbar.module.css";
 
@@ -8,6 +9,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const { dark, toggle }        = useDarkMode();
+  const pathname                = usePathname();
+
+  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
@@ -16,10 +20,24 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { href: "/rooms", label: "PG & Rooms" },
+    { href: "/",      label: "Home"        },
+    { href: "/rooms", label: "PG & Rooms"  },
     { href: "/mess",  label: "Mess"        },
     { href: "/about", label: "About"       },
   ];
+
+  // Match current active link index
+  const activeIdx = links.findIndex(l => 
+    l.href === "/" ? pathname === "/" : pathname.startsWith(l.href)
+  );
+  const matchedIdx = activeIdx !== -1 ? activeIdx : 0;
+  const targetIdx = hoverIdx !== null ? hoverIdx : matchedIdx;
+
+  // Each desktop tab is exactly 120px wide in css
+  const capsuleStyle = targetIdx !== -1 ? {
+    transform: `translateX(${targetIdx * 120}px)`,
+    opacity: 1
+  } : { opacity: 0 };
 
   return (
     <header className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
@@ -37,9 +55,22 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <nav className={styles.links}>
-          {links.map(l => (
-            <Link key={l.href} href={l.href} className={styles.link}>{l.label}</Link>
-          ))}
+          <div className={styles.navCapsule} style={capsuleStyle} />
+          {links.map((l, idx) => {
+            const isActive = idx === matchedIdx;
+            const isTarget = idx === targetIdx;
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`${styles.link} ${isActive ? styles.linkActive : ""} ${isTarget ? styles.linkTarget : ""}`}
+                onMouseEnter={() => setHoverIdx(idx)}
+                onMouseLeave={() => setHoverIdx(null)}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right actions */}

@@ -400,3 +400,58 @@
   .downloadCard { padding: 2.5rem 1.25rem; }
   .gridLineV1, .gridLineV2 { display: none; }
 }
+
+/* ─── DUAL MARQUEE TICKER ─── */
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+  z-index: 1;
+}
+
+.marqueeRow {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.marqueeStream {
+  display: inline-flex;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  animation: marqueeRight 22s linear infinite;
+}
+
+.marqueeStreamReverse {
+  animation: marqueeLeft 22s linear infinite;
+}
+
+.marqueeStream span {
+  padding-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(-33.33%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

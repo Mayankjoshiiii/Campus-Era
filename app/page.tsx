@@ -91,6 +91,26 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── DUAL MARQUEE TICKER ── */}
+        <div className={styles.marqueeContainer}>
+          <div className="lineH" />
+          <div className={styles.marqueeRow}>
+            <div className={styles.marqueeStream}>
+              <span>STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
+              <span>STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
+              <span>STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
+            </div>
+          </div>
+          <div className={styles.marqueeRow} style={{ borderTop: '1px solid var(--border)' }}>
+            <div className={`${styles.marqueeStream} ${styles.marqueeStreamReverse}`}>
+              <span className="textOutline">STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
+              <span className="textOutline">STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
+              <span className="textOutline">STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
+            </div>
+          </div>
+          <div className="lineH" />
+        </div>
+
         {/* ── DOON MATCHER WIDGET ── */}
         <div style={{ position: 'relative', padding: '1rem 0' }}>
           <div className="lineH" />
