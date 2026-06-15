@@ -73,7 +73,7 @@ export default function AboutPage() {
               <h2>Get In Touch</h2>
               <p>
                 Want to list your PG on Campus Era, partner with us, or just say hi?
-                Reach us at <a href="mailto:hello@campusera.in">hello@campusera.in</a> or use our{" "}
+                Reach us at <a href="mailto:campus.era.tech@gmail.com">campus.era.tech@gmail.com</a> or use our{" "}
                 <a href="/contact">contact form</a>.
               </p>
             </div>

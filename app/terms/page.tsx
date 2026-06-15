@@ -82,7 +82,7 @@ export default function TermsPage() {
               <h2>9. Contact</h2>
               <p>
                 For questions about these Terms, contact us at{" "}
-                <a href="mailto:legal@campusera.in">legal@campusera.in</a>.
+                <a href="mailto:campus.era.tech@gmail.com">campus.era.tech@gmail.com</a>.
               </p>
             </div>
           </div>

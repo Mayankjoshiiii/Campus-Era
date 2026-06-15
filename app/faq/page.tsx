@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: "Can I list my PG or mess on Campus Era?",
-    a: "Absolutely! Visit our Contact page and select 'List My PG / Mess' as the subject, or email us at hello@campusera.in. Our team will onboard you within 48 hours.",
+    a: "Absolutely! Visit our Contact page and select 'List My PG / Mess' as the subject, or email us at campus.era.tech@gmail.com. Our team will onboard you within 48 hours.",
   },
   {
     q: "Which cities is Campus Era available in?",
@@ -61,7 +61,7 @@ export default function FaqPage() {
 
           <div className={styles.helpNote}>
             Still have questions? Reach us at{" "}
-            <a href="mailto:support@campusera.in">support@campusera.in</a> or use our{" "}
+            <a href="mailto:campus.era.tech@gmail.com">campus.era.tech@gmail.com</a> or use our{" "}
             <a href="/contact">contact form</a>.
           </div>
         </div>

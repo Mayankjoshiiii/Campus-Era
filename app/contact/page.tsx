@@ -71,7 +71,7 @@ export default function ContactPage() {
           {/* Quick contact info */}
           <div className={styles.helpNote}>
             📧 For quick help, email us at{" "}
-            <a href="mailto:support@campusera.in">support@campusera.in</a>
+            <a href="mailto:campus.era.tech@gmail.com">campus.era.tech@gmail.com</a>
           </div>
         </div>
       </main>

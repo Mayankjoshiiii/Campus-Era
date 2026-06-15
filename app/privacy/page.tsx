@@ -64,7 +64,7 @@ export default function PrivacyPage() {
             </div>
             <div className={styles.section}>
               <h2>7. Contact</h2>
-              <p>Questions about this policy? Email us at <a href="mailto:privacy@campusera.in">privacy@campusera.in</a>.</p>
+              <p>Questions about this policy? Email us at <a href="mailto:campus.era.tech@gmail.com">campus.era.tech@gmail.com</a>.</p>
             </div>
           </div>
         </div>

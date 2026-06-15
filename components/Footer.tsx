@@ -48,7 +48,7 @@ export default function Footer() {
             <h5>Legal</h5>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>
-            <a href="mailto:support@campusera.in">support@campusera.in</a>
+            <a href="mailto:campus.era.tech@gmail.com">campus.era.tech@gmail.com</a>
           </div>
         </div>
 
