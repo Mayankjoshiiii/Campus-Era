@@ -5,7 +5,7 @@ const Ctx = createContext({ dark: false, toggle: () => {} });
 export const useDarkMode = () => useContext(Ctx);
 
 export default function DarkModeProvider({ children }: { children: ReactNode }) {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,13 +14,13 @@ export default function DarkModeProvider({ children }: { children: ReactNode }) 
     if (stored) {
       setDark(stored === "dark");
     } else {
-      setDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      setDark(true);
     }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
-    document.documentElement.classList.toggle("dark", dark);
+    document.documentElement.classList.toggle("light", !dark);
     localStorage.setItem("campus-era-theme", dark ? "dark" : "light");
   }, [dark, mounted]);
 
