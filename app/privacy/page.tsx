@@ -41,7 +41,7 @@ export default function PrivacyPage() {
               <ul>
                 <li>With your explicit consent</li>
                 <li>To comply with legal obligations</li>
-                <li>To protect the rights and safety of Roomix users</li>
+                <li>To protect the rights and safety of Campus Era users</li>
                 <li>With service providers who assist us in operating the platform</li>
               </ul>
             </div>
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
             </div>
             <div className={styles.section}>
               <h2>7. Contact</h2>
-              <p>Questions about this policy? Email us at <a href="mailto:privacy@roomix.in">privacy@roomix.in</a>.</p>
+              <p>Questions about this policy? Email us at <a href="mailto:privacy@campusera.in">privacy@campusera.in</a>.</p>
             </div>
           </div>
         </div>

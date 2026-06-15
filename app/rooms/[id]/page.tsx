@@ -75,7 +75,7 @@ export default function RoomDetail({ params }: { params: Promise<{ id: string }>
                   </svg>
                   Call Owner
                 </a>
-                <p className={styles.appNote}>📱 Full details & booking available in the <strong>Roomix App</strong></p>
+                <p className={styles.appNote}>📱 Full details & booking available in the <strong>Campus Era App</strong></p>
               </div>
 
               <div className={styles.infoCard}>

@@ -11,7 +11,7 @@ export default function AboutPage() {
         <div className={styles.wrap}>
           <div className={styles.header}>
             <span className={styles.eyebrow}>Our Story</span>
-            <h1 className={styles.title}>About Roomix</h1>
+            <h1 className={styles.title}>About Campus Era</h1>
             <p className={styles.subtitle}>Built by students, for students</p>
           </div>
 
@@ -19,10 +19,10 @@ export default function AboutPage() {
             <div className={styles.section}>
               <h2>Who We Are</h2>
               <p>
-                Roomix was founded in 2024 by a group of Delhi University students who were frustrated with the chaos of finding a PG — spam calls, unreliable listings, and zero transparency. We built the platform we wish had existed when we were freshers.
+                Campus Era was founded in 2024 by a group of Delhi University students who were frustrated with the chaos of finding a PG — spam calls, unreliable listings, and zero transparency. We built the platform we wish had existed when we were freshers.
               </p>
               <p>
-                Today, Roomix helps thousands of students across Delhi and NCR find verified PGs, mess services, and compatible roommates — all without a single rupee of brokerage.
+                Today, Campus Era helps thousands of students across Delhi and NCR find verified PGs, mess services, and compatible roommates — all without a single rupee of brokerage.
               </p>
             </div>
 
@@ -71,8 +71,8 @@ export default function AboutPage() {
             <div className={styles.section}>
               <h2>Get In Touch</h2>
               <p>
-                Want to list your PG on Roomix, partner with us, or just say hi?
-                Reach us at <a href="mailto:hello@roomix.in">hello@roomix.in</a> or use our{" "}
+                Want to list your PG on Campus Era, partner with us, or just say hi?
+                Reach us at <a href="mailto:hello@campusera.in">hello@campusera.in</a> or use our{" "}
                 <a href="/contact">contact form</a>.
               </p>
             </div>

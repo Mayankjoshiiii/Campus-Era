@@ -17,11 +17,11 @@ const instrument = Instrument_Sans({
 });
 
 export const metadata = {
-  title: "Roomix — Student Housing, Simplified",
-  description: "Find PGs, mess services, and connect with roommates near your campus. Roomix is the #1 student housing ecosystem.",
+  title: "Campus Era — Student Housing, Simplified",
+  description: "Find PGs, mess services, and connect with roommates near your campus. Campus Era is the #1 student housing ecosystem.",
   keywords: ["PG", "student housing", "mess", "hostel", "roommate", "accommodation", "college"],
   openGraph: {
-    title: "Roomix — Student Housing, Simplified",
+    title: "Campus Era — Student Housing, Simplified",
     description: "Find PGs, mess services & roommates near your campus.",
     type: "website",
   },

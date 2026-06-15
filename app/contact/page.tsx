@@ -71,7 +71,7 @@ export default function ContactPage() {
           {/* Quick contact info */}
           <div className={styles.helpNote}>
             📧 For quick help, email us at{" "}
-            <a href="mailto:support@roomix.in">support@roomix.in</a>
+            <a href="mailto:support@campusera.in">support@campusera.in</a>
           </div>
         </div>
       </main>

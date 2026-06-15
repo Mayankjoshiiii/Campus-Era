@@ -32,7 +32,7 @@ export default function Navbar() {
               <path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/>
             </svg>
           </div>
-          <span className={styles.logoText}>Room<span className={styles.logoAccent}>ix</span></span>
+          <span className={styles.logoText}>Campus <span className={styles.logoAccent}>Era</span></span>
         </Link>
 
         {/* Desktop links */}

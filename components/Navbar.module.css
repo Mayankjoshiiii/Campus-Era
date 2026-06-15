@@ -90,7 +90,10 @@
   background: var(--surface); border: 1px solid var(--border);
   cursor: pointer;
 }
-.burger span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+.burger span {
+  display: block; width: 20px; height: 2px;
+  background: var(--text); border-radius: 2px; transition: all 0.3s;
+}
 .burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
@@ -102,13 +105,16 @@
   background: var(--bg);
   border-top: 1px solid var(--border);
 }
+
 .drawerLink {
   font-size: 1rem; font-weight: 600;
   color: var(--text); padding: 0.8rem 1rem;
   border-radius: 12px; transition: all 0.2s;
 }
 .drawerLink:hover { background: var(--primary-light); color: var(--primary); }
+
 .drawerDivider { height: 1px; background: var(--border); margin: 0.4rem 0; }
+
 .drawerTheme {
   padding: 0.7rem 1rem; border-radius: 12px;
   font-size: 0.9rem; font-weight: 600;
@@ -117,6 +123,7 @@
   text-align: left; transition: all 0.2s;
 }
 .drawerTheme:hover { color: var(--primary); }
+
 .drawerCta {
   margin-top: 0.4rem; padding: 0.85rem 1rem;
   background: linear-gradient(135deg, #2563EB, #1D4ED8);

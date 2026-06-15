@@ -91,7 +91,7 @@ export default function MessDetail({ params }: { params: { id: string } }) {  co
                   </svg>
                   Call Owner
                 </a>
-                <p className={styles.appNote}>📱 Full menu & booking available in the <strong>Roomix App</strong></p>
+                <p className={styles.appNote}>📱 Full menu & booking available in the <strong>Campus Era App</strong></p>
               </div>
 
               <div className={styles.infoCard}>

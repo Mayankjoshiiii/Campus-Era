@@ -26,7 +26,7 @@ export default function Home() {
             <span className={styles.heroGrad}>Simplified.</span>
           </h1>
           <p className={styles.heroSub}>
-            Roomix helps college students find verified PGs, mess services, and roommates near campus — all in one beautiful app.
+            Campus Era helps college students find verified PGs, mess services, and roommates near campus — all in one beautiful app.
           </p>
           <div className={styles.heroActions}>
             <a href="#download" className={styles.btnPrimary}>
@@ -92,7 +92,7 @@ export default function Home() {
           <div className={styles.secHead}>
             <div>
               <p className={styles.secEyebrow}>✨ Everything You Need</p>
-              <h2 className={styles.secTitle}>Why Students Love Roomix</h2>
+              <h2 className={styles.secTitle}>Why Students Love Campus Era</h2>
             </div>
           </div>
           <div className={styles.featGrid}>
@@ -112,7 +112,7 @@ export default function Home() {
           <h2 className={styles.secTitle} style={{textAlign:"center",marginBottom:"3rem"}}>Find Your Place in 3 Simple Steps</h2>
           <div className={styles.steps}>
             {[
-              { n:"01", title:"Download the App",    desc:"Available on iOS & Android. Free to use for students."            },
+              { n:"01", title:"Download the App",    desc:"Available on Android (iOS soon coming). Free to use for students." },
               { n:"02", title:"Browse Listings",      desc:"Filter by location, budget, food type, and university."           },
               { n:"03", title:"Connect Directly",     desc:"Call or message the owner directly. No brokerage, no middleman."  },
             ].map(s => (
@@ -130,13 +130,13 @@ export default function Home() {
           <div className={styles.downloadCard}>
             <div className={styles.downloadText}>
               <h2 className={styles.downloadTitle}>Ready to Find Your Perfect Student Home?</h2>
-              <p className={styles.downloadSub}>Join 500+ students already using Roomix. Download the app — it's completely free.</p>
+              <p className={styles.downloadSub}>Join 500+ students already using Campus Era. Download the app — it's completely free.</p>
               <div className={styles.downloadBtns}>
-                <a href="#" className={styles.storBtn}>
+                <a href="#" className={styles.storBtn} style={{ opacity: 0.6, cursor: "not-allowed" }} onClick={(e) => e.preventDefault()}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                  <div><small>Download on the</small><strong>App Store</strong></div>
+                  <div><small>App Store</small><strong>Soon Coming</strong></div>
                 </a>
-                <a href="#" className={styles.storBtn}>
+                <a href="https://play.google.com/store/apps/details?id=com.company.campusera&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className={styles.storBtn}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 0 2.76.74l11.34-6.54-2.9-2.9-11.2 8.7zM20.9 10.37 17.5 8.44 14.28 11.5l3.22 3.22 3.42-1.96a2 2 0 0 0-.02-3.39zM2 2.24v19.52l10-10L2 2.24zM5.94.5l11.34 6.54-2.9 2.9L5.04 1.24A2 2 0 0 1 5.94.5z"/></svg>
                   <div><small>Get it on</small><strong>Google Play</strong></div>
                 </a>

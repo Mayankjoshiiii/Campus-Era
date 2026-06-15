@@ -10,7 +10,7 @@ export default function DarkModeProvider({ children }: { children: ReactNode }) 
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem("roomix-theme");
+    const stored = localStorage.getItem("campus-era-theme");
     if (stored) {
       setDark(stored === "dark");
     } else {
@@ -21,7 +21,7 @@ export default function DarkModeProvider({ children }: { children: ReactNode }) 
   useEffect(() => {
     if (!mounted) return;
     document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("roomix-theme", dark ? "dark" : "light");
+    localStorage.setItem("campus-era-theme", dark ? "dark" : "light");
   }, [dark, mounted]);
 
   return (
