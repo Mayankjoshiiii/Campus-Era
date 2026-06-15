@@ -129,23 +129,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ─── SCROLL REVEAL ANIMATIONS ─── */
+@keyframes revealFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
   will-change: opacity, transform;
 }
 
 .reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+  animation: revealFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.heroReveal {
+  opacity: 0;
+  animation: revealFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
 }
 
 /* Stagger delays */
-.delay1 { transition-delay: 0.1s; }
-.delay2 { transition-delay: 0.2s; }
-.delay3 { transition-delay: 0.3s; }
-.delay4 { transition-delay: 0.4s; }
-.delay5 { transition-delay: 0.5s; }
-.delay6 { transition-delay: 0.6s; }
+.delay1 { animation-delay: 0.1s !important; }
+.delay2 { animation-delay: 0.2s !important; }
+.delay3 { animation-delay: 0.3s !important; }
+.delay4 { animation-delay: 0.4s !important; }
+.delay5 { animation-delay: 0.5s !important; }
+.delay6 { animation-delay: 0.6s !important; }

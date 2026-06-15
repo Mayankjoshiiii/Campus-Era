@@ -38,18 +38,18 @@ export default function Home() {
 
         {/* ── HERO ── */}
         <section className={styles.hero}>
-          <div className={`${styles.heroPill} reveal`}>
+          <div className={`${styles.heroPill} heroReveal`}>
             <span className={styles.pillDot}/>
             Now live exclusively in Dehradun
           </div>
-          <h1 className={`${styles.heroTitle} reveal delay1`}>
+          <h1 className={`${styles.heroTitle} heroReveal delay1`}>
             Student Housing,<br/>
             <span className={`${styles.heroGrad} doodleHighlight`}>Finally Sorted.</span>
           </h1>
-          <p className={`${styles.heroSub} reveal delay2`}>
+          <p className={`${styles.heroSub} heroReveal delay2`}>
             Bidholi or Clement Town, we've got you covered. Find verified PGs, mess services, and compatible roommates near your college. Zero brokerage, zero fake pictures, 100% student vibes.
           </p>
-          <div className={`${styles.heroActions} reveal delay3`}>
+          <div className={`${styles.heroActions} heroReveal delay3`}>
             <a href="#download" className={styles.btnPrimary}>
               Download App
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
@@ -61,7 +61,7 @@ export default function Home() {
           </div>
 
           {/* Stats strip */}
-          <div className={`${styles.stats} reveal delay4`}>
+          <div className={`${styles.stats} heroReveal delay4`}>
             {[
               { n: "500+",  l: "Students Housed"  },
               { n: "50+",   l: "PG Listings"       },
@@ -76,7 +76,7 @@ export default function Home() {
           </div>
 
           {/* Hero image grid */}
-          <div className={`${styles.heroGrid} reveal delay5`}>
+          <div className={`${styles.heroGrid} heroReveal delay5`}>
             <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=80" alt="PG room" className={styles.hImg1}/>
             <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=80" alt="Mess food" className={styles.hImg2}/>
             <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&q=80" alt="Student room" className={styles.hImg3}/>
