@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "Which cities is Campus Era available in?",
-    a: "We are currently live in Delhi and NCR — including areas near Delhi University, GGSIPU, Amity University, and NSIT. We're expanding to Bangalore, Pune, and Hyderabad in 2025.",
+    a: "We are currently live exclusively in Dehradun — including areas near UPES (Bidholi & Kandoli), Graphic Era University, DIT University, IMS Unison, and UTU. We are focused on providing the best student housing experience in Dehradun.",
   },
   {
     q: "How do I contact a PG or mess owner?",

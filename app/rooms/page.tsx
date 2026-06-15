@@ -7,7 +7,7 @@ import { ROOMS } from "@/lib/data";
 import styles from "./rooms.module.css";
 
 const TYPES   = ["All", "Single", "Double", "Triple"];
-const UNIVS   = ["All Universities", "Delhi University", "GGSIPU", "Amity University", "NSIT"];
+const UNIVS   = ["All Universities", "UPES", "Graphic Era", "DIT University", "IMS Unison", "UTU"];
 const BUDGETS = [
   { label: "Any Budget", min: 0,     max: Infinity },
   { label: "Under ₹6k",  min: 0,     max: 6000     },

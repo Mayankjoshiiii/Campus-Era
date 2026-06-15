@@ -19,7 +19,7 @@ export default function Home() {
         <section className={styles.hero}>
           <div className={styles.heroPill}>
             <span className={styles.pillDot}/>
-            Now live in Delhi &amp; NCR
+            Now live exclusively in Dehradun
           </div>
           <h1 className={styles.heroTitle}>
             Student Housing,<br/>

@@ -74,7 +74,7 @@ export default function TermsPage() {
             <div className={styles.section}>
               <h2>8. Governing Law</h2>
               <p>
-                These Terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in New Delhi, India.
+                These Terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of courts in Dehradun, Uttarakhand, India.
               </p>
             </div>
 
