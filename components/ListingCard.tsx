@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 import styles from "./ListingCard.module.css";
 
 // -------------------- TYPES --------------------
@@ -62,24 +61,11 @@ export default function ListingCard(props: ListingCardProps) {
     ? "Non-Veg Only"
     : "Veg & Non-Veg";
 
+  // Extracts neighborhood name (e.g. Bidholi or Premnagar) from full location string
   const areaName = item.location.split(",")[0].trim();
 
-  // Mouse move handler for spotlight glow
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
-    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
-  };
-
   return (
-    <Link
-      href={href}
-      className={`${styles.card} ${isPg ? styles.pgCard : styles.messCard}`}
-      onMouseMove={handleMouseMove}
-    >
-      {/* Background Image Section */}
+    <Link href={href} className={`${styles.card} ${isPg ? styles.pgCard : styles.messCard}`}>
       <div className={styles.imgWrap}>
         <img
           src={item.image}
@@ -87,44 +73,36 @@ export default function ListingCard(props: ListingCardProps) {
           className={styles.img}
           loading="lazy"
         />
-        <div className={styles.shadowOverlay} />
+
+        {item.rating > 0 && (
+          <div className={styles.ratingBadge}>
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+            <span>{ratingVal}</span>
+          </div>
+        )}
       </div>
 
-      {/* Floating Glassmorphic Details Box */}
-      <div className={styles.detailsBox}>
-        {/* Header Row: Category Tag & Rating */}
+      <div className={styles.body}>
         <div className={styles.metaRow}>
           <span className={isPg ? styles.tagPg : styles.tagMess}>
             {categoryText}
           </span>
-          {item.rating > 0 && (
-            <div className={styles.ratingBadge}>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
-              </svg>
-              <span>{ratingVal}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Title */}
-        <h3 className={styles.title}>{title}</h3>
-
-        {/* Location & Reviews Row */}
-        <div className={styles.locRow}>
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-          <span>{areaName}</span>
           <span className={styles.metaDot}>&bull;</span>
-          <span>{item.reviews} reviews</span>
+          <span className={styles.metaLoc}>{areaName}</span>
         </div>
+
+        <h3 className={styles.title}>{title}</h3>
 
         <div className={styles.divider} />
 
-        {/* Price Row */}
-        <div className={styles.priceRow}>
+        <div className={styles.footer}>
           <div className={styles.priceCol}>
             <span className={styles.priceLabel}>Starts from</span>
             <span className={styles.priceVal}>
@@ -132,7 +110,10 @@ export default function ListingCard(props: ListingCardProps) {
               <span className={styles.unit}>{unit}</span>
             </span>
           </div>
-          <span className={styles.arrowIcon}>→</span>
+
+          <div className={styles.reviewsCol}>
+            <span className={styles.reviewsCount}>{item.reviews} reviews</span>
+          </div>
         </div>
       </div>
     </Link>
