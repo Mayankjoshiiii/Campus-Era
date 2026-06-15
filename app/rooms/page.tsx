@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ListingCard from "@/components/ListingCard";
@@ -30,18 +30,37 @@ export default function RoomsPage() {
     return typeOk && univOk && budgOk;
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.02, rootMargin: "0px 0px -20px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [list]);
+
   return (
     <>
       <Navbar />
       <main className={styles.main}>
-        <section className={styles.header}>
+        <section className={`${styles.header} reveal`}>
           <span className={styles.eyebrow}>🏠 PG &amp; Rooms</span>
           <h1 className={styles.title}>Browse All PG Listings</h1>
           <p className={styles.sub}>Verified accommodations near your campus — no brokerage</p>
         </section>
 
         {/* Filters */}
-        <div className={styles.filtersWrap}>
+        <div className={`${styles.filtersWrap} reveal delay1`}>
           <div className={styles.filters}>
             {/* Room Type */}
             <div className={styles.filterGroup}>
@@ -93,7 +112,7 @@ export default function RoomsPage() {
 
         <section className={styles.gridWrap}>
           {list.length === 0 ? (
-            <div className={styles.empty}>
+            <div className={`${styles.empty} reveal delay2`}>
               <span className={styles.emptyIcon}>🏚️</span>
               <p>No PGs found for the selected filters.</p>
               <button className={styles.resetBtn} onClick={() => { setRoomType("All"); setUniversity("All Universities"); setBudgetIdx(0); }}>
@@ -102,7 +121,11 @@ export default function RoomsPage() {
             </div>
           ) : (
             <div className={styles.grid}>
-              {list.map(r => <ListingCard key={r.id} item={r} type="pg" />)}
+              {list.map((r, i) => (
+                <div key={r.id} className={`reveal delay${(i % 3) + 1}`}>
+                  <ListingCard item={r} type="pg" />
+                </div>
+              ))}
             </div>
           )}
         </section>

@@ -62,7 +62,7 @@ const isPg = props.type === "pg";
     : "🟡 Veg & Non-Veg";
 
   return (
-    <Link href={href} className={styles.card}>
+    <Link href={href} className={`${styles.card} ${isPg ? styles.pgCard : styles.messCard}`}>
       <div className={styles.imgWrap}>
         <img
           src={item.image}

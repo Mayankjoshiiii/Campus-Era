@@ -92,7 +92,7 @@
   border-radius: 50%;
   background: var(--primary);
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(37,99,235,0.4);
+  box-shadow: 0 2px 6px rgba(13,148,136,0.35);
   transition: transform 0.1s;
 }
 .slider::-webkit-slider-thumb:hover {

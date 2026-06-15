@@ -11,7 +11,7 @@
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(37,99,235,0.5), rgba(249,115,22,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(13,148,136,0.5), rgba(217,119,6,0.3), transparent);
 }
 
 .inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
@@ -72,7 +72,7 @@
   font-size: 0.85rem; color: rgba(255,255,255,0.4);
   transition: all 0.2s;
 }
-.col a:hover { color: #60A5FA; transform: translateX(3px); display: inline-block; }
+.col a:hover { color: var(--primary); transform: translateX(3px); display: inline-block; }
 
 .divider {
   height: 1px;

@@ -35,6 +35,8 @@ export default function Home() {
     <>
       <Navbar />
       <main className={styles.main}>
+        <div className={styles.gridLineV1} />
+        <div className={styles.gridLineV2} />
 
         {/* ── HERO ── */}
         <section className={styles.hero}>
@@ -44,7 +46,7 @@ export default function Home() {
           </div>
           <h1 className={`${styles.heroTitle} heroReveal delay1`}>
             Student Housing,<br/>
-            <span className={`${styles.heroGrad} doodleHighlight`}>Finally Sorted.</span>
+            <span className="textOutline">Finally</span> <span className={`${styles.heroGrad} doodleHighlight`}>Sorted.</span>
           </h1>
           <p className={`${styles.heroSub} heroReveal delay2`}>
             Bidholi or Clement Town, we've got you covered. Find verified PGs, mess services, and compatible roommates near your college. Zero brokerage, zero fake pictures, 100% student vibes.

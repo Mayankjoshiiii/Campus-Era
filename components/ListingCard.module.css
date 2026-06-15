@@ -2,31 +2,42 @@
   display: flex; 
   flex-direction: column;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(12px);
   text-decoration: none;
   color: inherit;
-  /* Ensures cards don't grow too wide on large screens */
   max-width: 420px;
   width: 100%;
   margin: 0 auto;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+.pgCard:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.08);
 }
 
-:global(.dark) .card:hover {
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+.messCard:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(217, 119, 6, 0.08);
+}
+
+:global(.dark) .pgCard:hover {
+  box-shadow: 0 20px 40px rgba(45, 212, 191, 0.12);
+}
+
+:global(.dark) .messCard:hover {
+  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.12);
 }
 
 .imgWrap {
   position: relative;
-  /* Fixed aspect ratio prevents images from stretching */
   aspect-ratio: 16 / 10; 
   overflow: hidden;
   background: var(--surface2);
@@ -36,23 +47,23 @@
   width: 100%; 
   height: 100%; 
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover .img { 
-  transform: scale(1.05); 
+  transform: scale(1.06); 
 }
 
 .rating {
   position: absolute; 
   top: 12px; 
   right: 12px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   color: #FBBF24; 
-  font-size: 0.75rem; 
+  font-size: 0.72rem; 
   font-weight: 700;
-  padding: 0.35rem 0.6rem; 
+  padding: 0.3rem 0.55rem; 
   border-radius: 8px;
   display: flex; 
   align-items: center; 
@@ -63,17 +74,18 @@
   position: absolute; 
   bottom: 12px; 
   left: 12px;
-  padding: 0.3rem 0.75rem; 
-  border-radius: 6px;
-  font-size: 0.7rem; 
+  padding: 0.3rem 0.7rem; 
+  border-radius: 8px;
+  font-size: 0.68rem; 
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   backdrop-filter: blur(8px);
+  color: white;
 }
 
-.pgBadge   { background: rgba(37, 99, 235, 0.9);  color: white; }
-.messBadge { background: rgba(249, 115, 22, 0.9); color: white; }
+.pgBadge   { background: rgba(13, 148, 136, 0.85); }
+.messBadge { background: rgba(217, 119, 6, 0.85); }
 
 .body {
   padding: 1.25rem 1.5rem 1.5rem;
@@ -85,11 +97,10 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: 1.1rem; 
+  font-size: 1.05rem; 
   font-weight: 700;
   color: var(--text); 
-  line-height: 1.3;
-  /* Truncates long titles to 2 lines */
+  line-height: 1.35;
   display: -webkit-box; 
   -webkit-line-clamp: 2; 
   -webkit-box-orient: vertical; 
@@ -101,15 +112,15 @@
   align-items: center; 
   gap: 0.35rem;
   font-family: var(--font-body);
-  font-size: 0.85rem; 
+  font-size: 0.82rem; 
   color: var(--text-muted);
 }
 
 .loc svg { 
   flex-shrink: 0; 
   color: var(--accent); 
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
 }
 
 .footer {
@@ -123,7 +134,7 @@
 
 .price {
   font-family: var(--font-display);
-  font-size: 1.2rem; 
+  font-size: 1.15rem; 
   font-weight: 800; 
   letter-spacing: -0.01em;
 }
@@ -133,7 +144,7 @@
 
 .unit { 
   font-family: var(--font-body);
-  font-size: 0.75rem; 
+  font-size: 0.72rem; 
   font-weight: 500; 
   color: var(--text-subtle); 
   margin-left: 2px; 
@@ -141,6 +152,6 @@
 
 .reviews { 
   font-family: var(--font-body);
-  font-size: 0.75rem; 
+  font-size: 0.72rem; 
   color: var(--text-subtle); 
 }

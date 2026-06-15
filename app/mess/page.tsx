@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ListingCard from "@/components/ListingCard";
@@ -16,15 +16,34 @@ export default function MessPage() {
   const [filter, setFilter] = useState("all");
   const list = filter === "all" ? MESS : MESS.filter(m => m.foodtype === filter);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.02, rootMargin: "0px 0px -20px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [list]);
+
   return (
     <>
       <Navbar />
       <main className={styles.main}>
-        <section className={styles.header}>
+        <section className={`${styles.header} reveal`}>
           <span className={styles.eyebrow}>🍽️ Mess &amp; Tiffin</span>
           <h1 className={styles.title}>Browse All Mess Services</h1>
           <p className={styles.sub}>Find healthy, home-style food near your campus</p>
-          <div className={styles.pills}>
+          <div className={`${styles.pills} reveal delay1`}>
             {FILTERS.map(f => (
               <button
                 key={f.key}
@@ -37,10 +56,14 @@ export default function MessPage() {
 
         <section className={styles.gridWrap}>
           {list.length === 0 ? (
-            <p className={styles.empty}>No mess services found.</p>
+            <p className={`${styles.empty} reveal delay2`}>No mess services found.</p>
           ) : (
             <div className={styles.grid}>
-              {list.map(m => <ListingCard key={m.id} item={m} type="mess" />)}
+              {list.map((m, i) => (
+                <div key={m.id} className={`reveal delay${(i % 3) + 1}`}>
+                  <ListingCard item={m} type="mess" />
+                </div>
+              ))}
             </div>
           )}
         </section>

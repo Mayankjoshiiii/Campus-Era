@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Sans:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Sans:wght@600;700;800&display=swap');
+
 /* ─── Light tokens ─── */
 :root {
   --primary: #0D9488;
@@ -22,7 +23,7 @@
   --success: #10B981;
   --radius: 16px;
   --radius-lg: 24px;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'Instrument Sans', sans-serif;
 }
 
@@ -34,17 +35,17 @@
   --accent: #F59E0B;
   --accent-light: rgba(245,158,11,0.08);
 
-  --bg: #111112;
-  --surface: #18181C;
-  --surface2: #212127;
-  --card-bg: rgba(24,24,28,0.8);
+  --bg: #0B0F19;
+  --surface: #111827;
+  --surface2: #1F2937;
+  --card-bg: rgba(17,24,39,0.8);
   --card-border: rgba(255,255,255,0.05);
 
-  --text: #F4F4F5;
-  --text-muted: #A1A1AA;
-  --text-subtle: #71717A;
+  --text: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --text-subtle: #6B7280;
 
-  --border: #27272A;
+  --border: #374151;
   --star: #FBBF24;
   color-scheme: dark;
 }
@@ -54,7 +55,7 @@
 html { scroll-behavior: smooth; height: 100%; }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -63,24 +64,25 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Ambient background glow */
+/* Premium structural drafting grid background */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(13,148,136,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(217,119,6,0.03) 0%, transparent 60%),
-    var(--bg);
-  transition: background 0.3s;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(13,148,136,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13,148,136,0.03) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at top, black 50%, rgba(0,0,0,0.3) 100%);
+  -webkit-mask-image: radial-gradient(circle at top, black 50%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
 }
 
 .dark body::before {
-  background:
-    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(45,212,191,0.03) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(245,158,11,0.02) 0%, transparent 60%),
-    #111112;
+  background-image: 
+    linear-gradient(to right, rgba(45,212,191,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45,212,191,0.02) 1px, transparent 1px);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -88,31 +90,18 @@ img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-/* Skeleton shimmer */
-@keyframes shimmer {
-  0%   { background-position: -600px 0; }
-  100% { background-position: 600px 0; }
-}
-.skeleton {
-  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
-  background-size: 600px 100%;
-  animation: shimmer 1.6s infinite;
-  border-radius: var(--radius);
+/* Typography */
+.textOutline {
+  color: transparent !important;
+  -webkit-text-stroke: 1.5px var(--text);
 }
 
-/* ─── Handwritten Accent Styles ─── */
-.handwritten {
-  font-family: var(--font-handwritten), cursive;
-  font-size: 1.35rem;
-  color: var(--accent);
-  transform: rotate(-3deg);
-  display: inline-block;
-}
-
+/* Doodle Underline Animation */
 .doodleHighlight {
   position: relative;
   display: inline-block;
@@ -121,45 +110,68 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   content: '';
   position: absolute;
   left: 0; bottom: -2px;
-  width: 100%; height: 6px;
-  background: rgba(249, 115, 22, 0.2);
+  width: 0%; height: 6px;
+  background: rgba(217, 119, 6, 0.25);
   border-radius: 4px;
   z-index: -1;
   transform: skewX(-10deg) rotate(-0.5deg);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
 }
 
-/* ─── SCROLL REVEAL ANIMATIONS ─── */
+/* Stagger & Entrance Transitions */
 @keyframes revealFadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(35px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(35px) scale(0.98);
   will-change: opacity, transform;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
-  animation: revealFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal.active .doodleHighlight::after {
+  width: 100% !important;
 }
 
 .heroReveal {
   opacity: 0;
-  animation: revealFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: revealFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: opacity, transform;
 }
 
+/* Dynamic slide reveal from hidden clip mask */
+.clipMask {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.clipReveal {
+  display: block;
+  transform: translateY(100%);
+  animation: clipRevealAnim 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes clipRevealAnim {
+  to { transform: translateY(0); }
+}
+
 /* Stagger delays */
-.delay1 { animation-delay: 0.1s !important; }
-.delay2 { animation-delay: 0.2s !important; }
-.delay3 { animation-delay: 0.3s !important; }
-.delay4 { animation-delay: 0.4s !important; }
-.delay5 { animation-delay: 0.5s !important; }
-.delay6 { animation-delay: 0.6s !important; }
+.delay1 { animation-delay: 0.1s !important; transition-delay: 0.1s !important; }
+.delay2 { animation-delay: 0.2s !important; transition-delay: 0.2s !important; }
+.delay3 { animation-delay: 0.3s !important; transition-delay: 0.3s !important; }
+.delay4 { animation-delay: 0.4s !important; transition-delay: 0.4s !important; }
+.delay5 { animation-delay: 0.5s !important; transition-delay: 0.5s !important; }
+.delay6 { animation-delay: 0.6s !important; transition-delay: 0.6s !important; }
