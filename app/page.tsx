@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,6 +12,25 @@ export default function Home() {
   const topRooms = ROOMS.slice(0, 3);
   const topMess  = MESS.slice(0, 3);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -18,18 +38,18 @@ export default function Home() {
 
         {/* ── HERO ── */}
         <section className={styles.hero}>
-          <div className={styles.heroPill}>
+          <div className={`${styles.heroPill} reveal`}>
             <span className={styles.pillDot}/>
             Now live exclusively in Dehradun
           </div>
-          <h1 className={styles.heroTitle}>
+          <h1 className={`${styles.heroTitle} reveal delay1`}>
             Student Housing,<br/>
             <span className={`${styles.heroGrad} doodleHighlight`}>Finally Sorted.</span>
           </h1>
-          <p className={styles.heroSub}>
+          <p className={`${styles.heroSub} reveal delay2`}>
             Bidholi or Clement Town, we've got you covered. Find verified PGs, mess services, and compatible roommates near your college. Zero brokerage, zero fake pictures, 100% student vibes.
           </p>
-          <div className={styles.heroActions}>
+          <div className={`${styles.heroActions} reveal delay3`}>
             <a href="#download" className={styles.btnPrimary}>
               Download App
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
@@ -41,7 +61,7 @@ export default function Home() {
           </div>
 
           {/* Stats strip */}
-          <div className={styles.stats}>
+          <div className={`${styles.stats} reveal delay4`}>
             {[
               { n: "500+",  l: "Students Housed"  },
               { n: "50+",   l: "PG Listings"       },
@@ -56,7 +76,7 @@ export default function Home() {
           </div>
 
           {/* Hero image grid */}
-          <div className={styles.heroGrid}>
+          <div className={`${styles.heroGrid} reveal delay5`}>
             <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=80" alt="PG room" className={styles.hImg1}/>
             <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=80" alt="Mess food" className={styles.hImg2}/>
             <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&q=80" alt="Student room" className={styles.hImg3}/>
@@ -64,11 +84,13 @@ export default function Home() {
         </section>
 
         {/* ── DOON MATCHER WIDGET ── */}
-        <DoonMatcher />
+        <div className="reveal">
+          <DoonMatcher />
+        </div>
 
         {/* ── TOP PGs ── */}
         <section className={styles.section}>
-          <div className={styles.secHead}>
+          <div className={`${styles.secHead} reveal`}>
             <div>
               <p className={styles.secEyebrow}>🏠 PG &amp; Rooms</p>
               <h2 className={styles.secTitle}>Top Rated PGs Near Campus</h2>
@@ -76,13 +98,17 @@ export default function Home() {
             <Link href="/rooms" className={styles.seeAll}>See all →</Link>
           </div>
           <div className={styles.grid}>
-            {topRooms.map(r => <ListingCard key={r.id} item={r} type="pg"/>)}
+            {topRooms.map((r, i) => (
+              <div key={r.id} className={`reveal delay${i + 1}`}>
+                <ListingCard item={r} type="pg"/>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* ── TOP MESS ── */}
         <section className={styles.section}>
-          <div className={styles.secHead}>
+          <div className={`${styles.secHead} reveal`}>
             <div>
               <p className={styles.secEyebrow}>🍽️ Mess &amp; Tiffin</p>
               <h2 className={styles.secTitle}>Best Mess Services Near You</h2>
@@ -90,21 +116,25 @@ export default function Home() {
             <Link href="/mess" className={styles.seeAll}>See all →</Link>
           </div>
           <div className={styles.grid}>
-            {topMess.map(m => <ListingCard key={m.id} item={m} type="mess"/>)}
+            {topMess.map((m, i) => (
+              <div key={m.id} className={`reveal delay${i + 1}`}>
+                <ListingCard item={m} type="mess"/>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* ── FEATURES ── */}
         <section className={styles.section} id="features">
-          <div className={styles.secHead}>
+          <div className={`${styles.secHead} reveal`}>
             <div>
               <p className={styles.secEyebrow}>✨ Everything You Need</p>
               <h2 className={styles.secTitle}>Why Students Love Campus Era</h2>
             </div>
           </div>
           <div className={styles.featGrid}>
-            {FEATURES.map(f => (
-              <div key={f.title} className={styles.featCard}>
+            {FEATURES.map((f, i) => (
+              <div key={f.title} className={`${styles.featCard} reveal delay${(i % 3) + 1}`}>
                 <span className={styles.featIcon}>{f.icon}</span>
                 <h3 className={styles.featTitle}>{f.title}</h3>
                 <p className={styles.featDesc}>{f.desc}</p>
@@ -115,28 +145,28 @@ export default function Home() {
 
         {/* ── DEHRADUN SURVIVAL GUIDE ── */}
         <section className={styles.survivalSection}>
-          <div className={styles.secHead} style={{ justifyContent: "center", textAlign: "center", marginBottom: "3rem" }}>
+          <div className={`${styles.secHead} reveal`} style={{ justifyContent: "center", textAlign: "center", marginBottom: "3rem" }}>
             <div>
               <p className={styles.secEyebrow}>⛰️ Dehradun Student Corner</p>
               <h2 className={styles.secTitle}>Doon Student Survival Guide</h2>
             </div>
           </div>
           <div className={styles.survivalGrid}>
-            <div className={styles.survivalCard}>
+            <div className={`${styles.survivalCard} reveal delay1`}>
               <span className={styles.survivalIcon}>🚌</span>
               <h3 className={styles.survivalTitle}>Vikram Route Cheat Sheet</h3>
               <p className={styles.survivalDesc}>
                 Dehradun's shared blue autos (Vikrams) are cheap but have fixed routes. Route 5 goes to Premnagar/Sudhowala (ideal for UTU/Uttaranchal), and Route 1 goes to Rajpur Road. Memorize these to save heavy private auto charges!
               </p>
             </div>
-            <div className={styles.survivalCard}>
+            <div className={`${styles.survivalCard} reveal delay2`}>
               <span className={styles.survivalIcon}>🍜</span>
               <h3 className={styles.survivalTitle}>Late Night Chai &amp; Maggi</h3>
               <p className={styles.survivalDesc}>
                 Exam stress? Bidholi's local valley Maggi points, Clement Town's momo stalls, and Jakhan's cafes are the ultimate saviors. Maggi point views are free, tea is ₹10!
               </p>
             </div>
-            <div className={styles.survivalCard}>
+            <div className={`${styles.survivalCard} reveal delay3`}>
               <span className={styles.survivalIcon}>🏡</span>
               <h3 className={styles.survivalTitle}>PG Contract Rules</h3>
               <p className={styles.survivalDesc}>
@@ -148,15 +178,15 @@ export default function Home() {
 
         {/* ── HOW IT WORKS ── */}
         <section className={styles.howSection}>
-          <p className={styles.secEyebrow} style={{textAlign:"center"}}>📱 How It Works</p>
-          <h2 className={styles.secTitle} style={{textAlign:"center",marginBottom:"3rem"}}>Find Your Place in 3 Simple Steps</h2>
+          <p className={`${styles.secEyebrow} reveal`} style={{textAlign:"center"}}>📱 How It Works</p>
+          <h2 className={`${styles.secTitle} reveal delay1`} style={{textAlign:"center",marginBottom:"3rem"}}>Find Your Place in 3 Simple Steps</h2>
           <div className={styles.steps}>
             {[
               { n:"01", title:"Download the App",    desc:"Available on Android (iOS coming soon). Free to use for students." },
               { n:"02", title:"Browse Listings",      desc:"Filter by location, budget, food type, and university."           },
               { n:"03", title:"Connect Directly",     desc:"Call or message the owner directly. No brokerage, no middleman."  },
-            ].map(s => (
-              <div key={s.n} className={styles.step}>
+            ].map((s, i) => (
+              <div key={s.n} className={`${styles.step} reveal delay${i + 1}`}>
                 <span className={styles.stepN}>{s.n}</span>
                 <h3 className={styles.stepTitle}>{s.title}</h3>
                 <p className={styles.stepDesc}>{s.desc}</p>
@@ -166,7 +196,7 @@ export default function Home() {
         </section>
 
         {/* ── DOWNLOAD CTA ── */}
-        <section className={styles.downloadSection} id="download">
+        <section className={`${styles.downloadSection} reveal`} id="download">
           <div className={styles.downloadCard}>
             <div className={styles.downloadText}>
               <h2 className={styles.downloadTitle}>Ready to Find Your Perfect Student Home?</h2>
