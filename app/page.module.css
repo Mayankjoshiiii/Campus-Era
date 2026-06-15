@@ -34,13 +34,8 @@
 }
 
 .heroGrad {
-  background: linear-gradient(135deg, #2563EB 0%, #60A5FA 45%, #F97316 100%);
-  background-size: 200%;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradShift 5s ease infinite;
+  color: var(--primary);
 }
-@keyframes gradShift { 0%,100%{background-position:0%} 50%{background-position:100%} }
 
 .heroSub {
   font-size: 1.15rem; color: var(--text-muted);

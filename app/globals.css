@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Sans:wght@600;700;800&display=swap');
 /* ─── Light tokens ─── */
 :root {
-  --primary: #2563EB;
-  --primary-hover: #1D4ED8;
-  --primary-light: #EFF6FF;
-  --accent: #F97316;
+  --primary: #0D9488;
+  --primary-hover: #0F766E;
+  --primary-light: #F0FDFA;
+  --accent: #D97706;
   --accent-light: #FFF7ED;
 
-  --bg: #FFFFFF;
-  --surface: #F8FAFC;
-  --surface2: #F1F5F9;
-  --card-bg: rgba(255,255,255,0.72);
-  --card-border: rgba(148,163,184,0.2);
+  --bg: #FDFCF7;
+  --surface: #F5F3EC;
+  --surface2: #EAE7DC;
+  --card-bg: rgba(255,255,255,0.85);
+  --card-border: rgba(13,148,136,0.08);
 
-  --text: #0F172A;
-  --text-muted: #64748B;
+  --text: #1E293B;
+  --text-muted: #475569;
   --text-subtle: #94A3B8;
 
   --border: #E2E8F0;
@@ -28,17 +28,17 @@
 
 /* ─── Dark tokens ─── */
 .dark {
-  --primary: #60A5FA;
-  --primary-hover: #3B82F6;
-  --primary-light: rgba(96,165,250,0.12);
-  --accent: #FB923C;
-  --accent-light: rgba(249,115,22,0.12);
+  --primary: #2DD4BF;
+  --primary-hover: #14B8A6;
+  --primary-light: rgba(45,212,191,0.08);
+  --accent: #F59E0B;
+  --accent-light: rgba(245,158,11,0.08);
 
-  --bg: #09090B;
-  --surface: #111113;
-  --surface2: #18181B;
-  --card-bg: rgba(24,24,27,0.8);
-  --card-border: rgba(255,255,255,0.07);
+  --bg: #111112;
+  --surface: #18181C;
+  --surface2: #212127;
+  --card-bg: rgba(24,24,28,0.8);
+  --card-border: rgba(255,255,255,0.05);
 
   --text: #F4F4F5;
   --text-muted: #A1A1AA;
@@ -70,17 +70,17 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(37,99,235,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(249,115,22,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(13,148,136,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(217,119,6,0.03) 0%, transparent 60%),
     var(--bg);
   transition: background 0.3s;
 }
 
 .dark body::before {
   background:
-    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(96,165,250,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(251,146,60,0.04) 0%, transparent 60%),
-    #09090B;
+    radial-gradient(ellipse 70% 50% at 10% 0%, rgba(45,212,191,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 20%, rgba(245,158,11,0.02) 0%, transparent 60%),
+    #111112;
 }
 
 a { color: inherit; text-decoration: none; }
