@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import SplashScreen from "@/components/SplashScreen";
 import Footer from "@/components/Footer";
 import ListingCard from "@/components/ListingCard";
 import DoonMatcher from "@/components/DoonMatcher";
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <>
+      <SplashScreen />
       <Navbar />
       <main className={styles.main}>
 
