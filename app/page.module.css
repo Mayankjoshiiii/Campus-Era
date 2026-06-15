@@ -270,6 +270,52 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
+/* ─── SURVIVAL GUIDE ─── */
+.survivalSection {
+  max-width: 1280px; margin: 4rem auto;
+  padding: 4rem 2rem;
+  background: var(--surface2);
+  border-radius: var(--radius-lg);
+}
+
+.survivalGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.survivalCard {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  border-radius: var(--radius);
+  transition: all 0.25s;
+}
+.survivalCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.survivalIcon {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.survivalTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.survivalDesc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (min-width: 900px) {
   .hImg2,.hImg3 { display: block; }
@@ -279,6 +325,7 @@
 @media (max-width: 1024px) {
   .grid      { grid-template-columns: repeat(2, 1fr); }
   .featGrid  { grid-template-columns: repeat(2, 1fr); }
+  .survivalGrid { grid-template-columns: 1fr; }
   .steps     { grid-template-columns: 1fr; }
   .steps::before { display: none; }
   .step { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }

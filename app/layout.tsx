@@ -1,4 +1,4 @@
-import { Inter, Instrument_Sans } from "next/font/google"; // Updated fonts
+import { Inter, Instrument_Sans, Caveat } from "next/font/google"; // Updated fonts
 import "./globals.css";
 import DarkModeProvider from "@/components/DarkModeProvider";
 
@@ -16,6 +16,13 @@ const instrument = Instrument_Sans({
   display: "swap" 
 });
 
+// Caveat for hand-drawn stickers and notes
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-handwritten",
+  display: "swap"
+});
+
 export const metadata = {
   title: "Campus Era — Student Housing, Simplified",
   description: "Find PGs, mess services, and connect with roommates near your campus. Campus Era is the #1 student housing ecosystem.",
@@ -28,7 +35,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {  return (
-    <html lang="en" className={`${inter.variable} ${instrument.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${instrument.variable} ${caveat.variable}`} suppressHydrationWarning>
       <body>
         <DarkModeProvider>{children}</DarkModeProvider>
       </body>

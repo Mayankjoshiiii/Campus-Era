@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ListingCard from "@/components/ListingCard";
+import DoonMatcher from "@/components/DoonMatcher";
 import { ROOMS, MESS, FEATURES } from "@/lib/data";
 import styles from "./page.module.css";
 
@@ -23,10 +24,10 @@ export default function Home() {
           </div>
           <h1 className={styles.heroTitle}>
             Student Housing,<br/>
-            <span className={styles.heroGrad}>Simplified.</span>
+            <span className={`${styles.heroGrad} doodleHighlight`}>Finally Sorted.</span>
           </h1>
           <p className={styles.heroSub}>
-            Campus Era helps college students find verified PGs, mess services, and roommates near campus — all in one beautiful app.
+            Bidholi or Clement Town, we've got you covered. Find verified PGs, mess services, and compatible roommates near your college. Zero brokerage, zero fake pictures, 100% student vibes.
           </p>
           <div className={styles.heroActions}>
             <a href="#download" className={styles.btnPrimary}>
@@ -34,6 +35,9 @@ export default function Home() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
             </a>
             <Link href="/rooms" className={styles.btnSecondary}>Browse PGs</Link>
+            <div className="handwritten" style={{ marginLeft: "1.5rem", position: "relative", top: "8px" }}>
+              No brokerage, ever! 🤝
+            </div>
           </div>
 
           {/* Stats strip */}
@@ -58,6 +62,9 @@ export default function Home() {
             <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&q=80" alt="Student room" className={styles.hImg3}/>
           </div>
         </section>
+
+        {/* ── DOON MATCHER WIDGET ── */}
+        <DoonMatcher />
 
         {/* ── TOP PGs ── */}
         <section className={styles.section}>
@@ -103,6 +110,39 @@ export default function Home() {
                 <p className={styles.featDesc}>{f.desc}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* ── DEHRADUN SURVIVAL GUIDE ── */}
+        <section className={styles.survivalSection}>
+          <div className={styles.secHead} style={{ justifyContent: "center", textAlign: "center", marginBottom: "3rem" }}>
+            <div>
+              <p className={styles.secEyebrow}>⛰️ Dehradun Student Corner</p>
+              <h2 className={styles.secTitle}>Doon Student Survival Guide</h2>
+            </div>
+          </div>
+          <div className={styles.survivalGrid}>
+            <div className={styles.survivalCard}>
+              <span className={styles.survivalIcon}>🚌</span>
+              <h3 className={styles.survivalTitle}>Vikram Route Cheat Sheet</h3>
+              <p className={styles.survivalDesc}>
+                Dehradun's shared blue autos (Vikrams) are cheap but have fixed routes. Route 5 goes to Premnagar/Sudhowala (ideal for UTU/Uttaranchal), and Route 1 goes to Rajpur Road. Memorize these to save heavy private auto charges!
+              </p>
+            </div>
+            <div className={styles.survivalCard}>
+              <span className={styles.survivalIcon}>🍜</span>
+              <h3 className={styles.survivalTitle}>Late Night Chai &amp; Maggi</h3>
+              <p className={styles.survivalDesc}>
+                Exam stress? Bidholi's local valley Maggi points, Clement Town's momo stalls, and Jakhan's cafes are the ultimate saviors. Maggi point views are free, tea is ₹10!
+              </p>
+            </div>
+            <div className={styles.survivalCard}>
+              <span className={styles.survivalIcon}>🏡</span>
+              <h3 className={styles.survivalTitle}>PG Contract Rules</h3>
+              <p className={styles.survivalDesc}>
+                Most PGs in Doon have strict entry timings (typically 9:30 PM). Always clarify if the food menu includes Sunday dinner and if high-speed WiFi actually reaches your room before paying deposit.
+              </p>
+            </div>
           </div>
         </section>
 
