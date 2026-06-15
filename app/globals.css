@@ -64,29 +64,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Premium structural drafting grid background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(45,212,191,0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(45,212,191,0.02) 1px, transparent 1px);
-  mask-image: radial-gradient(circle at top, black 40%, rgba(0,0,0,0.15) 100%);
-  -webkit-mask-image: radial-gradient(circle at top, black 40%, rgba(0,0,0,0.15) 100%);
-  pointer-events: none;
-}
-
-.light body::before {
-  background-image: 
-    linear-gradient(to right, rgba(13,148,136,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(13,148,136,0.03) 1px, transparent 1px);
-  mask-image: radial-gradient(circle at top, black 50%, rgba(0,0,0,0.3) 100%);
-  -webkit-mask-image: radial-gradient(circle at top, black 50%, rgba(0,0,0,0.3) 100%);
-}
-
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
@@ -118,43 +95,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   z-index: -1;
   transform: skewX(-10deg) rotate(-0.5deg);
   transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-}
-
-/* ─── Self-Drawing lines drawing ─── */
-.lineV {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 1px;
-  background: rgba(45, 212, 191, 0.12);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 0;
-}
-.lineV.active {
-  transform: scaleY(1);
-}
-
-.light .lineV {
-  background: rgba(13, 148, 136, 0.1);
-}
-
-.lineH {
-  position: absolute;
-  left: 0; right: 0;
-  height: 1px;
-  background: rgba(45, 212, 191, 0.12);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 0;
-}
-.lineH.active {
-  transform: scaleX(1);
-}
-
-.light .lineH {
-  background: rgba(13, 148, 136, 0.1);
 }
 
 /* Stagger & Entrance Transitions */

@@ -25,7 +25,7 @@ export default function Home() {
       { threshold: 0.05, rootMargin: "0px 0px -40px 0px" }
     );
 
-    const elements = document.querySelectorAll(".reveal, .lineV, .lineH");
+    const elements = document.querySelectorAll(".reveal");
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
@@ -35,8 +35,6 @@ export default function Home() {
     <>
       <Navbar />
       <main className={styles.main}>
-        <div className="lineV" style={{ left: '15%' }} />
-        <div className="lineV" style={{ right: '15%' }} />
 
         {/* ── HERO ── */}
         <section className={styles.hero}>
@@ -77,23 +75,10 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Hero image grid */}
-          <div className={`${styles.heroGrid} heroReveal delay5`}>
-            <div style={{ overflow: 'hidden', borderRadius: 'var(--radius-lg)', width: '100%', height: '100%' }}>
-              <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=80" alt="PG room" className={styles.hImg1}/>
-            </div>
-            <div style={{ overflow: 'hidden', borderRadius: 'var(--radius-lg)', width: '100%', height: '100%' }}>
-              <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=500&q=80" alt="Mess food" className={styles.hImg2}/>
-            </div>
-            <div style={{ overflow: 'hidden', borderRadius: 'var(--radius-lg)', width: '100%', height: '100%' }}>
-              <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&q=80" alt="Student room" className={styles.hImg3}/>
-            </div>
-          </div>
         </section>
 
         {/* ── DUAL MARQUEE TICKER ── */}
         <div className={styles.marqueeContainer}>
-          <div className="lineH" />
           <div className={styles.marqueeRow}>
             <div className={styles.marqueeStream}>
               <span>STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
@@ -108,14 +93,10 @@ export default function Home() {
               <span className="textOutline">STAY &bull; EAT &bull; CHILL &bull; NO BROKERAGE &bull; CAMPUS ERA &bull;&nbsp;</span>
             </div>
           </div>
-          <div className="lineH" />
         </div>
 
         {/* ── DOON MATCHER WIDGET ── */}
         <div style={{ position: 'relative', padding: '1rem 0' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <div className="reveal">
             <DoonMatcher />
           </div>
@@ -123,9 +104,6 @@ export default function Home() {
 
         {/* ── TOP PGs ── */}
         <section className={styles.section} style={{ position: 'relative' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <div className={`${styles.secHead} reveal`}>
             <div>
               <p className={styles.secEyebrow}>🏠 PG &amp; Rooms</p>
@@ -144,9 +122,6 @@ export default function Home() {
 
         {/* ── TOP MESS ── */}
         <section className={styles.section} style={{ position: 'relative' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <div className={`${styles.secHead} reveal`}>
             <div>
               <p className={styles.secEyebrow}>🍽️ Mess &amp; Tiffin</p>
@@ -165,9 +140,6 @@ export default function Home() {
 
         {/* ── FEATURES ── */}
         <section className={styles.section} id="features" style={{ position: 'relative' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <div className={`${styles.secHead} reveal`}>
             <div>
               <p className={styles.secEyebrow}>✨ Everything You Need</p>
@@ -187,9 +159,6 @@ export default function Home() {
 
         {/* ── DEHRADUN SURVIVAL GUIDE ── */}
         <section className={styles.survivalSection} style={{ position: 'relative' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <div className={`${styles.secHead} reveal`} style={{ justifyContent: "center", textAlign: "center", marginBottom: "3rem" }}>
             <div>
               <p className={styles.secEyebrow}>⛰️ Dehradun Student Corner</p>
@@ -223,9 +192,6 @@ export default function Home() {
 
         {/* ── HOW IT WORKS ── */}
         <section className={styles.howSection} style={{ position: 'relative' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <p className={`${styles.secEyebrow} reveal`} style={{textAlign:"center"}}>📱 How It Works</p>
           <h2 className={`${styles.secTitle} reveal delay1`} style={{textAlign:"center",marginBottom:"3rem"}}>Find Your Place in 3 Simple Steps</h2>
           <div className={styles.steps}>
@@ -245,9 +211,6 @@ export default function Home() {
 
         {/* ── DOWNLOAD CTA ── */}
         <section className={`${styles.downloadSection} reveal`} id="download" style={{ position: 'relative' }}>
-          <div className="lineH" />
-          <div className="lineV" style={{ left: '15%' }} />
-          <div className="lineV" style={{ right: '15%' }} />
           <div className={styles.downloadCard}>
             <div className={styles.downloadText}>
               <h2 className={styles.downloadTitle}>Ready to Find Your Perfect Student Home?</h2>
