@@ -1,6 +1,6 @@
 "use client";
 import { notFound } from "next/navigation";
-import { use } from "react";
+import { use, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ROOMS } from "@/lib/data";
@@ -10,6 +10,33 @@ export default function RoomDetail({ params }: { params: Promise<{ id: string }>
   const { id } = use(params);
   const room = ROOMS.find(r => r.id === id);
   if (!room) notFound();
+
+  const [requestSent, setRequestSent] = useState(false);
+  const [reqForm, setReqForm] = useState({
+    name: "",
+    phone: "",
+    date: "",
+    sharing: "Double",
+  });
+
+  const handleRequestSubmit = () => {
+    if (!reqForm.name || !reqForm.phone) return;
+
+    const subjectText = `PG Booking Request [${room.title.toUpperCase()}] - ${reqForm.name}`;
+    const bodyText = `Hi Campus Era Team,\n\nI want to submit a booking/visit request for a PG:\n\n` +
+      `PG Name: ${room.title}\n` +
+      `Location: ${room.location}\n` +
+      `Monthly Rent: ₹${room.price}/month\n\n` +
+      `User Details:\n` +
+      `- Name: ${reqForm.name}\n` +
+      `- Phone: ${reqForm.phone}\n` +
+      `- Move-in Date: ${reqForm.date || "Not specified"}\n` +
+      `- Room Preference: ${reqForm.sharing}\n`;
+
+    const mailtoUrl = `mailto:campus.era.tech@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+    window.location.href = mailtoUrl;
+    setRequestSent(true);
+  };
 
   return (
     <>
@@ -92,6 +119,83 @@ export default function RoomDetail({ params }: { params: Promise<{ id: string }>
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* Booking Request Form (Landscape/Full Width below the grid) */}
+          <div className={styles.requestCard}>
+            {requestSent ? (
+              <div className={styles.successBox}>
+                <span className={styles.successIcon}>🎉</span>
+                <h4 className={styles.successTitle}>Request Submitted!</h4>
+                <p className={styles.successDesc}>
+                  Doon senior student matchers will reach out to you within a few hours to confirm availability and schedule a visit.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div>
+                  <h4 className={styles.formTitle}>Submit Booking / Visit Request</h4>
+                  <p className={styles.formSub}>No deposit needed yet. We will verify room availability and schedule a free visit.</p>
+                </div>
+                
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-name">Your Name</label>
+                    <input
+                      id="req-name"
+                      type="text"
+                      placeholder="Riya Sharma"
+                      className={styles.inputField}
+                      value={reqForm.name}
+                      onChange={(e) => setReqForm(f => ({ ...f, name: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-phone">Phone Number</label>
+                    <input
+                      id="req-phone"
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      className={styles.inputField}
+                      value={reqForm.phone}
+                      onChange={(e) => setReqForm(f => ({ ...f, phone: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-date">Move-in Date</label>
+                    <input
+                      id="req-date"
+                      type="date"
+                      className={styles.inputField}
+                      value={reqForm.date}
+                      onChange={(e) => setReqForm(f => ({ ...f, date: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-sharing">Room Preference</label>
+                    <select
+                      id="req-sharing"
+                      className={styles.selectField}
+                      value={reqForm.sharing}
+                      onChange={(e) => setReqForm(f => ({ ...f, sharing: e.target.value }))}
+                    >
+                      <option value="Single">Single Sharing</option>
+                      <option value="Double">Double Sharing</option>
+                      <option value="Triple">Triple Sharing</option>
+                    </select>
+                  </div>
+
+                  <div className={styles.submitBtnGroup}>
+                    <button className={styles.submitBtn} onClick={handleRequestSubmit}>
+                      Submit Request →
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>

@@ -13,6 +13,17 @@ export default function ContactPage() {
 
   const handleSubmit = () => {
     if (!form.name || !form.email || !form.message) return;
+    
+    const subjectText = `Contact Query [${form.subject.toUpperCase()}] - ${form.name}`;
+    const bodyText = `Hi Campus Era Team,\n\nYou have received a new query from the Campus Era website:\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Subject: ${form.subject}\n\n` +
+      `Message Details:\n${form.message}\n`;
+      
+    const mailtoUrl = `mailto:campus.era.tech@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+    
+    window.location.href = mailtoUrl;
     setSent(true);
   };
 

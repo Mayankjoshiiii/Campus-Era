@@ -1,3 +1,10 @@
+.linkWrapper {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
 .tiltWrap {
   height: 100%;
   display: block;

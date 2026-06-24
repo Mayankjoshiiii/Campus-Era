@@ -34,9 +34,14 @@ export default function FloatingScene() {
         <div className={`${styles.shape} ${styles.ring}`} />
         <div className={`${styles.shape} ${styles.sphere}`} />
         <div className={`${styles.shape} ${styles.pyramid}`} />
+        <div className={`${styles.shape} ${styles.cube2}`} />
+        <div className={`${styles.shape} ${styles.sphere2}`} />
+        <div className={`${styles.shape} ${styles.cone}`} />
+        <div className={`${styles.shape} ${styles.cylinder}`} />
       </div>
       <div className={styles.glow1} />
       <div className={styles.glow2} />
+      <div className={styles.glow3} />
       <div className={styles.grid} />
     </div>
   );

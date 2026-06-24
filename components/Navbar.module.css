@@ -7,7 +7,7 @@
   max-width: 1200px;
   z-index: 100;
   padding: 0.6rem 1.8rem;
-  background: rgba(253, 252, 247, 0.7);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border);
   border-radius: 100px;
@@ -17,17 +17,12 @@
 .scrolled {
   top: 0.75rem;
   width: calc(100% - 1.5rem);
-  background: rgba(253, 252, 247, 0.88);
+  background: var(--nav-scrolled);
   border-color: rgba(13, 148, 136, 0.15);
   box-shadow: 0 12px 30px rgba(13, 148, 136, 0.05);
 }
 
-:global(.dark) .nav {
-  background: rgba(11, 15, 25, 0.7);
-}
-
 :global(.dark) .scrolled {
-  background: rgba(17, 24, 39, 0.88);
   border-color: rgba(45, 212, 191, 0.15);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }

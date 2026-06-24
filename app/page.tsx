@@ -112,9 +112,7 @@ export default function Home() {
         {/* ── DOON MATCHER WIDGET ── */}
         <div style={{ position: 'relative', padding: '1rem 0' }}>
           <div className="reveal">
-            <Tilt3D maxTilt={5} scale={1.005}>
-              <DoonMatcher />
-            </Tilt3D>
+            <DoonMatcher />
           </div>
         </div>
 

@@ -38,7 +38,8 @@
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   transform: translateY(10px);
-  opacity: 0.95;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .light .tooltip {
@@ -50,6 +51,7 @@
 .visible {
   transform: translateY(0);
   opacity: 1;
+  visibility: visible;
   border-color: rgba(45, 212, 191, 0.25);
   box-shadow: 0 20px 40px rgba(45, 212, 191, 0.06);
 }

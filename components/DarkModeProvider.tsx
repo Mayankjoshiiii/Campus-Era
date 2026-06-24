@@ -20,6 +20,7 @@ export default function DarkModeProvider({ children }: { children: ReactNode }) 
 
   useEffect(() => {
     if (!mounted) return;
+    document.documentElement.classList.toggle("dark", dark);
     document.documentElement.classList.toggle("light", !dark);
     localStorage.setItem("campus-era-theme", dark ? "dark" : "light");
   }, [dark, mounted]);

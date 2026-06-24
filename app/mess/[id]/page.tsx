@@ -1,14 +1,43 @@
+"use client";
 import { notFound } from "next/navigation";
+import { use, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MESS } from "@/lib/data";
 import styles from "./detail.module.css";
 
-export default function MessDetail({ params }: { params: { id: string } }) {  const { id } = params;
+export default function MessDetail({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
 
   const mess = MESS.find(m => m.id === id);
   if (!mess) notFound();
 
+  const [requestSent, setRequestSent] = useState(false);
+  const [reqForm, setReqForm] = useState({
+    name: "",
+    phone: "",
+    date: "",
+    plan: "Both",
+  });
+
+  const handleRequestSubmit = () => {
+    if (!reqForm.name || !reqForm.phone) return;
+
+    const subjectText = `Mess Trial Request [${mess.name.toUpperCase()}] - ${reqForm.name}`;
+    const bodyText = `Hi Campus Era Team,\n\nI want to get a 2-day free trial subscription for this mess:\n\n` +
+      `Mess Name: ${mess.name}\n` +
+      `Location: ${mess.location}\n` +
+      `Monthly Subscription: ₹${mess.pricepermonth}/month\n\n` +
+      `User Details:\n` +
+      `- Name: ${reqForm.name}\n` +
+      `- Phone: ${reqForm.phone}\n` +
+      `- Trial Start Date: ${reqForm.date || "Not specified"}\n` +
+      `- Meal Preference: ${reqForm.plan}\n`;
+
+    const mailtoUrl = `mailto:campus.era.tech@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+    window.location.href = mailtoUrl;
+    setRequestSent(true);
+  };
 
   const foodBadge =
     mess.foodtype === "veg"    ? "🟢 Veg Only"       :
@@ -109,6 +138,83 @@ export default function MessDetail({ params }: { params: { id: string } }) {  co
                 ))}
               </div>
             </div>
+          </div>
+
+          {/* Floating Subscription/Trial Request Form (Landscape/Full Width below the grid) */}
+          <div className={styles.requestCard}>
+            {requestSent ? (
+              <div className={styles.successBox}>
+                <span className={styles.successIcon}>🎉</span>
+                <h4 className={styles.successTitle}>Request Submitted!</h4>
+                <p className={styles.successDesc}>
+                  Doon senior student matchers will contact you within a few hours to start your free 2-day trial.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div>
+                  <h4 className={styles.formTitle}>Get 2-Day Free Trial</h4>
+                  <p className={styles.formSub}>Try the food before paying any subscription. No deposit required.</p>
+                </div>
+                
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-name">Your Name</label>
+                    <input
+                      id="req-name"
+                      type="text"
+                      placeholder="Riya Sharma"
+                      className={styles.inputField}
+                      value={reqForm.name}
+                      onChange={(e) => setReqForm(f => ({ ...f, name: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-phone">Phone Number</label>
+                    <input
+                      id="req-phone"
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      className={styles.inputField}
+                      value={reqForm.phone}
+                      onChange={(e) => setReqForm(f => ({ ...f, phone: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-date">Trial Start Date</label>
+                    <input
+                      id="req-date"
+                      type="date"
+                      className={styles.inputField}
+                      value={reqForm.date}
+                      onChange={(e) => setReqForm(f => ({ ...f, date: e.target.value }))}
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor="req-plan">Meal Preference</label>
+                    <select
+                      id="req-plan"
+                      className={styles.selectField}
+                      value={reqForm.plan}
+                      onChange={(e) => setReqForm(f => ({ ...f, plan: e.target.value }))}
+                    >
+                      <option value="Both">Both Lunch & Dinner</option>
+                      <option value="Lunch">Lunch Only</option>
+                      <option value="Dinner">Dinner Only</option>
+                    </select>
+                  </div>
+
+                  <div className={styles.submitBtnGroup}>
+                    <button className={styles.submitBtn} onClick={handleRequestSubmit}>
+                      Submit Request →
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>

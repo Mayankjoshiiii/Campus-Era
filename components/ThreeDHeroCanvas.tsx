@@ -438,7 +438,7 @@ export default function ThreeDHeroCanvas() {
 
       {/* Floating details overlay */}
       <div className={`${styles.tooltip} ${hoveredMarker ? styles.visible : ""}`}>
-        {hoveredMarker ? (
+        {hoveredMarker && (
           <>
             <div className={styles.header}>
               <span className={`${styles.dot} ${styles[hoveredMarker.type]}`} />
@@ -452,11 +452,6 @@ export default function ThreeDHeroCanvas() {
               <span className={styles.interactiveHint}>{hoveredMarker.hint}</span>
             </div>
           </>
-        ) : (
-          <div className={styles.guideText}>
-            ⛰️ Campus Era 3D World<br/>
-            <span>Drag to rotate town • Hover pins to explore</span>
-          </div>
         )}
       </div>
     </div>

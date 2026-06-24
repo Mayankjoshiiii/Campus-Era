@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { ROOMS } from "@/lib/data";
 import styles from "./DoonMatcher.module.css";
 
@@ -141,7 +142,7 @@ export default function DoonMatcher() {
         <div className={styles.resultsGrid}>
           {matches.length > 0 ? (
             matches.map((room) => (
-              <div key={room.id} className={styles.card}>
+              <Link key={room.id} href={`/rooms/${room.id}`} className={styles.card}>
                 <div className={styles.cardInfo}>
                   <div className={styles.cardTitle}>{room.title}</div>
                   <div className={styles.cardMeta}>
@@ -154,7 +155,7 @@ export default function DoonMatcher() {
                   <span className={styles.priceNum}>₹{room.price.toLocaleString()}</span>
                   <span className={styles.pricePeriod}>per month</span>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <div className={styles.noResults}>
