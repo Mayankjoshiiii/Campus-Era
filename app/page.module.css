@@ -253,7 +253,7 @@
 }
 .featCard:hover {
   border-color: var(--primary);
-  box-shadow: 0 16px 40px rgba(13,148,136,0.06);
+  box-shadow: 0 16px 40px rgba(13, 148, 136, 0.08);
 }
 
 .featIcon {
@@ -262,14 +262,23 @@
   margin-bottom: 1.25rem;
   width: 48px; height: 48px;
   background: var(--surface2); border-radius: 12px;
+  transform: translateZ(20px);
+  transition: transform 0.4s;
+}
+
+.featCard:hover .featIcon {
+  transform: translateZ(35px) scale(1.1);
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
 .featTitle {
   font-family: var(--font-display), sans-serif;
   font-size: 1.05rem; font-weight: 700;
   color: var(--text); margin-bottom: 0.6rem;
+  transform: translateZ(22px);
 }
-.featDesc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.featDesc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; transform: translateZ(12px); }
 
 /* ─── HOW IT WORKS ─── */
 .howSection {
@@ -293,33 +302,45 @@
 }
 
 .step {
-  text-align: center; padding: 1.5rem 1rem;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
   height: 100%;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 .step:hover {
-  border-color: rgba(45, 212, 191, 0.25);
-  box-shadow: 0 16px 40px rgba(45, 212, 191, 0.06);
+  transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+  border-color: var(--primary);
+  box-shadow: 
+    -4px 4px 0 var(--bg),
+    0 20px 40px rgba(45, 212, 191, 0.08);
 }
 
 .stepN {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--primary);
-  color: white; font-weight: 800; font-size: 0.85rem;
-  margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(45, 212, 191, 0.3), inset 0 2px 2px rgba(255,255,255,0.4);
+  transform: translateZ(25px);
 }
 
 .stepTitle {
   font-family: var(--font-display), sans-serif;
-  font-size: 1.05rem; font-weight: 700;
-  color: var(--text); margin-bottom: 0.5rem;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.6rem;
+  transform: translateZ(18px);
 }
-.stepDesc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.stepDesc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; transform: translateZ(12px); }
 
 /* ─── DOWNLOAD CTA ─── */
 .downloadSection {
