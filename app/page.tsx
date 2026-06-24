@@ -6,6 +6,8 @@ import SplashScreen from "@/components/SplashScreen";
 import Footer from "@/components/Footer";
 import ListingCard from "@/components/ListingCard";
 import DoonMatcher from "@/components/DoonMatcher";
+import ThreeDHeroCanvas from "@/components/ThreeDHeroCanvas";
+import Tilt3D from "@/components/Tilt3D";
 import { ROOMS, MESS, FEATURES } from "@/lib/data";
 import styles from "./page.module.css";
 
@@ -40,42 +42,52 @@ export default function Home() {
 
         {/* ── HERO ── */}
         <section className={styles.hero}>
-          <div className={`${styles.heroPill} heroReveal`}>
-            <span className={styles.pillDot}/>
-            Now live exclusively in Dehradun
-          </div>
-          <h1 className={`${styles.heroTitle} heroReveal delay1`}>
-            Student Housing,<br/>
-            <span className="textOutline">Finally</span> <span className={`${styles.heroGrad} doodleHighlight`}>Sorted.</span>
-          </h1>
-          <p className={`${styles.heroSub} heroReveal delay2`}>
-            Bidholi or Clement Town, we've got you covered. Find verified PGs, mess services, and compatible roommates near your college. Zero brokerage, zero fake pictures, 100% student vibes.
-          </p>
-          <div className={`${styles.heroActions} heroReveal delay3`}>
-            <a href="#download" className={styles.btnPrimary}>
-              Download App
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
-            </a>
-            <Link href="/rooms" className={styles.btnSecondary}>Browse PGs</Link>
-            <div className="handwritten" style={{ marginLeft: "1.5rem", position: "relative", top: "8px" }}>
-              No brokerage, ever! 🤝
+          <div className={styles.heroWrapper}>
+            <div className={styles.heroContent}>
+              <div className={`${styles.heroPill} heroReveal`}>
+                <span className={styles.pillDot}/>
+                Now live exclusively in Dehradun
+              </div>
+              <h1 className={`${styles.heroTitle} ${styles.heroTitle3d} heroReveal delay1`}>
+                Student Housing,<br/>
+                <span className="textOutline">Finally</span> <span className={`${styles.heroGrad} doodleHighlight`}>Sorted.</span>
+              </h1>
+              <p className={`${styles.heroSub} heroReveal delay2`}>
+                Bidholi or Clement Town, we've got you covered. Find verified PGs, mess services, and compatible roommates near your college. Zero brokerage, zero fake pictures, 100% student vibes.
+              </p>
+              <div className={`${styles.heroActions} heroReveal delay3`}>
+                <a href="#download" className={styles.btnPrimary}>
+                  Download App
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+                </a>
+                <Link href="/rooms" className={styles.btnSecondary}>Browse PGs</Link>
+                <div className="handwritten" style={{ marginLeft: "1.5rem", position: "relative", top: "8px" }}>
+                  No brokerage, ever! 🤝
+                </div>
+              </div>
+            </div>
+
+            <div className={`${styles.heroVisual} heroReveal delay4`}>
+              <ThreeDHeroCanvas />
             </div>
           </div>
 
           {/* Stats strip */}
-          <div className={`${styles.stats} heroReveal delay4`}>
-            {[
-              { n: "500+",  l: "Students Housed"  },
-              { n: "50+",   l: "PG Listings"       },
-              { n: "20+",   l: "Mess Services"     },
-              { n: "4.7★",  l: "Average Rating"    },
-            ].map(s => (
-              <div key={s.l} className={styles.stat}>
-                <span className={styles.statN}>{s.n}</span>
-                <span className={styles.statL}>{s.l}</span>
-              </div>
-            ))}
-          </div>
+          <Tilt3D className={`${styles.statsTilt} heroReveal delay5`} maxTilt={8} scale={1.01}>
+            <div className={styles.stats}>
+              {[
+                { n: "500+",  l: "Students Housed"  },
+                { n: "50+",   l: "PG Listings"       },
+                { n: "20+",   l: "Mess Services"     },
+                { n: "4.7★",  l: "Average Rating"    },
+              ].map(s => (
+                <div key={s.l} className={styles.stat}>
+                  <span className={styles.statN}>{s.n}</span>
+                  <span className={styles.statL}>{s.l}</span>
+                </div>
+              ))}
+            </div>
+          </Tilt3D>
 
         </section>
 
@@ -100,7 +112,9 @@ export default function Home() {
         {/* ── DOON MATCHER WIDGET ── */}
         <div style={{ position: 'relative', padding: '1rem 0' }}>
           <div className="reveal">
-            <DoonMatcher />
+            <Tilt3D maxTilt={5} scale={1.005}>
+              <DoonMatcher />
+            </Tilt3D>
           </div>
         </div>
 
@@ -150,11 +164,13 @@ export default function Home() {
           </div>
           <div className={styles.featGrid}>
             {FEATURES.map((f, i) => (
-              <div key={f.title} className={`${styles.featCard} reveal delay${(i % 3) + 1}`}>
-                <span className={styles.featIcon}>{f.icon}</span>
-                <h3 className={styles.featTitle}>{f.title}</h3>
-                <p className={styles.featDesc}>{f.desc}</p>
-              </div>
+              <Tilt3D key={f.title} className={`reveal delay${(i % 3) + 1}`} maxTilt={12}>
+                <div className={styles.featCard}>
+                  <span className={styles.featIcon}>{f.icon}</span>
+                  <h3 className={styles.featTitle}>{f.title}</h3>
+                  <p className={styles.featDesc}>{f.desc}</p>
+                </div>
+              </Tilt3D>
             ))}
           </div>
         </section>
@@ -168,27 +184,19 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.survivalGrid}>
-            <div className={`${styles.survivalCard} reveal delay1`}>
-              <span className={styles.survivalIcon}>🚌</span>
-              <h3 className={styles.survivalTitle}>Vikram Route Cheat Sheet</h3>
-              <p className={styles.survivalDesc}>
-                Dehradun's shared blue autos (Vikrams) are cheap but have fixed routes. Route 5 goes to Premnagar/Sudhowala (ideal for UTU/Uttaranchal), and Route 1 goes to Rajpur Road. Memorize these to save heavy private auto charges!
-              </p>
-            </div>
-            <div className={`${styles.survivalCard} reveal delay2`}>
-              <span className={styles.survivalIcon}>🍜</span>
-              <h3 className={styles.survivalTitle}>Late Night Chai &amp; Maggi</h3>
-              <p className={styles.survivalDesc}>
-                Exam stress? Bidholi's local valley Maggi points, Clement Town's momo stalls, and Jakhan's cafes are the ultimate saviors. Maggi point views are free, tea is ₹10!
-              </p>
-            </div>
-            <div className={`${styles.survivalCard} reveal delay3`}>
-              <span className={styles.survivalIcon}>🏡</span>
-              <h3 className={styles.survivalTitle}>PG Contract Rules</h3>
-              <p className={styles.survivalDesc}>
-                Most PGs in Doon have strict entry timings (typically 9:30 PM). Always clarify if the food menu includes Sunday dinner and if high-speed WiFi actually reaches your room before paying deposit.
-              </p>
-            </div>
+            {[
+              { icon: "🚌", title: "Vikram Route Cheat Sheet", desc: "Dehradun's shared blue autos (Vikrams) are cheap but have fixed routes. Route 5 goes to Premnagar/Sudhowala (ideal for UTU/Uttaranchal), and Route 1 goes to Rajpur Road. Memorize these to save heavy private auto charges!", delay: "1" },
+              { icon: "🍜", title: "Late Night Chai & Maggi", desc: "Exam stress? Bidholi's local valley Maggi points, Clement Town's momo stalls, and Jakhan's cafes are the ultimate saviors. Maggi point views are free, tea is ₹10!", delay: "2" },
+              { icon: "🏡", title: "PG Contract Rules", desc: "Most PGs in Doon have strict entry timings (typically 9:30 PM). Always clarify if the food menu includes Sunday dinner and if high-speed WiFi actually reaches your room before paying deposit.", delay: "3" },
+            ].map((card) => (
+              <Tilt3D key={card.title} className={`reveal delay${card.delay}`} maxTilt={10}>
+                <div className={styles.survivalCard}>
+                  <span className={styles.survivalIcon}>{card.icon}</span>
+                  <h3 className={styles.survivalTitle}>{card.title}</h3>
+                  <p className={styles.survivalDesc}>{card.desc}</p>
+                </div>
+              </Tilt3D>
+            ))}
           </div>
         </section>
 
@@ -202,17 +210,20 @@ export default function Home() {
               { n:"02", title:"Browse Listings",      desc:"Filter by location, budget, food type, and university."           },
               { n:"03", title:"Connect Directly",     desc:"Call or message the owner directly. No brokerage, no middleman."  },
             ].map((s, i) => (
-              <div key={s.n} className={`${styles.step} reveal delay${i + 1}`}>
-                <span className={styles.stepN}>{s.n}</span>
-                <h3 className={styles.stepTitle}>{s.title}</h3>
-                <p className={styles.stepDesc}>{s.desc}</p>
-              </div>
+              <Tilt3D key={s.n} className={`reveal delay${i + 1}`} maxTilt={10}>
+                <div className={styles.step}>
+                  <span className={styles.stepN}>{s.n}</span>
+                  <h3 className={styles.stepTitle}>{s.title}</h3>
+                  <p className={styles.stepDesc}>{s.desc}</p>
+                </div>
+              </Tilt3D>
             ))}
           </div>
         </section>
 
         {/* ── DOWNLOAD CTA ── */}
         <section className={`${styles.downloadSection} reveal`} id="download" style={{ position: 'relative' }}>
+          <Tilt3D className={styles.downloadTilt} maxTilt={6} scale={1.01}>
           <div className={styles.downloadCard}>
             <div className={styles.downloadText}>
               <h2 className={styles.downloadTitle}>Ready to Find Your Perfect Student Home?</h2>
@@ -229,9 +240,13 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.downloadImgs}>
-              <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="App preview" className={styles.dlImg}/>
+              <div className={styles.phoneMockup}>
+                <div className={styles.phoneNotch} />
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" alt="App preview" className={styles.dlImg}/>
+              </div>
             </div>
           </div>
+          </Tilt3D>
         </section>
 
       </main>

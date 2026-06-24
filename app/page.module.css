@@ -1,4 +1,11 @@
-.main { padding-top: 100px; position: relative; }
+.main {
+  padding-top: 100px;
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 100% 60%, rgba(245, 158, 11, 0.03) 0%, transparent 40%),
+              var(--bg);
+  z-index: 1;
+}
 
 /* ─── Hero Structural Lines ─── */
 .gridLineV1 {
@@ -19,11 +26,36 @@
 }
 
 /* ─── HERO ─── */
+/* ─── HERO ─── */
 .hero {
   max-width: 1280px; margin: 0 auto;
   padding: 6rem 2rem 5rem;
-  text-align: center; position: relative;
+  position: relative;
   z-index: 1;
+  overflow: visible;
+}
+
+.heroWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.heroContent {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.heroVisual {
+  flex: 0.9;
+  width: 100%;
 }
 
 .heroPill {
@@ -34,6 +66,8 @@
   border-radius: 100px;
   font-size: 0.78rem; font-weight: 600;
   color: var(--primary); margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .pillDot {
@@ -46,10 +80,20 @@
 
 .heroTitle {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(3rem, 7.5vw, 5.5rem);
+  font-size: clamp(2.5rem, 6.2vw, 4.8rem);
   font-weight: 800; line-height: 1.05;
   letter-spacing: -0.04em; color: var(--text);
   margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle3d {
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.04),
+    0 4px 12px rgba(0,0,0,0.3),
+    0 12px 40px rgba(45,212,191,0.08);
+  transform-style: preserve-3d;
 }
 
 .heroGrad {
@@ -57,11 +101,13 @@
 }
 
 .heroSub {
-  font-size: 1.1rem; color: var(--text-muted);
-  max-width: 550px; margin: 0 auto 2.75rem; line-height: 1.75;
+  font-size: 1.05rem; color: var(--text-muted);
+  max-width: 550px; margin: 0 0 2.75rem 0; line-height: 1.75;
+  position: relative;
+  z-index: 2;
 }
 
-.heroActions { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+.heroActions { display: flex; justify-content: flex-start; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; position: relative; z-index: 2; }
 
 .btnPrimary {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -104,13 +150,21 @@
 }
 
 /* Stats */
+.statsTilt {
+  max-width: 720px;
+  margin: 0 auto 4.5rem;
+}
+
 .stats {
   display: flex; justify-content: center; align-items: center;
-  gap: 0; flex-wrap: wrap; max-width: 720px; margin: 0 auto 4.5rem;
+  gap: 0; flex-wrap: wrap;
   background: var(--card-bg); border: 1px solid var(--border);
   border-radius: var(--radius-lg); overflow: hidden;
   backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.02),
+    0 20px 50px rgba(45,212,191,0.04);
+  transform-style: preserve-3d;
 }
 
 .stat {
@@ -188,16 +242,16 @@
 
 .featCard {
   padding: 2rem;
+  height: 100%;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
 }
 .featCard:hover {
-  transform: translateY(-6px);
   border-color: var(--primary);
   box-shadow: 0 16px 40px rgba(13,148,136,0.06);
 }
@@ -239,7 +293,17 @@
 }
 
 .step {
-  text-align: center; padding: 1rem;
+  text-align: center; padding: 1.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  height: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.step:hover {
+  border-color: rgba(45, 212, 191, 0.25);
+  box-shadow: 0 16px 40px rgba(45, 212, 191, 0.06);
 }
 
 .stepN {
@@ -263,6 +327,10 @@
   padding: 4rem 2rem;
   position: relative;
   z-index: 1;
+}
+
+.downloadTilt {
+  width: 100%;
 }
 
 .downloadCard {
@@ -311,12 +379,39 @@
 .storBtn small { display: block; font-size: 0.65rem; opacity: 0.6; }
 .storBtn strong { display: block; font-size: 0.85rem; font-weight: 700; }
 
-.downloadImgs { position: relative; z-index: 1; flex-shrink: 0; }
+.downloadImgs { position: relative; z-index: 1; flex-shrink: 0; perspective: 800px; }
+
+.phoneMockup {
+  position: relative;
+  padding: 12px;
+  background: linear-gradient(145deg, #222838 0%, #0a0c12 100%);
+  border-radius: 32px;
+  border: 2px solid rgba(45, 212, 191, 0.25);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.55),
+    0 0 40px rgba(45,212,191,0.1);
+  transform: rotateY(-12deg) rotateX(6deg);
+  transform-style: preserve-3d;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 6px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 10px;
+  z-index: 2;
+}
+
 .dlImg {
   width: 240px; height: 290px; object-fit: cover;
-  border-radius: 20px;
+  border-radius: 22px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.5);
   border: 1px solid rgba(255,255,255,0.08);
+  display: block;
 }
 
 /* ─── SURVIVAL GUIDE ─── */
@@ -341,10 +436,12 @@
   border: 1px solid var(--border);
   padding: 2.25rem;
   border-radius: var(--radius);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
 }
 .survivalCard:hover {
-  transform: translateY(-4px);
   border-color: var(--primary);
   box-shadow: 0 12px 30px rgba(0,0,0,0.03);
 }
@@ -408,6 +505,8 @@
   position: relative;
   background: var(--surface);
   z-index: 1;
+  transform: perspective(900px) rotateX(2deg);
+  transform-origin: center;
 }
 
 .marqueeRow {
@@ -453,5 +552,27 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .heroWrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .heroContent {
+    align-items: center;
+    text-align: center;
+  }
+  .heroContent .heroSub {
+    margin: 0 auto 2.75rem;
+  }
+  .heroContent .heroActions {
+    justify-content: center;
+  }
+  .heroVisual {
+    max-width: 480px;
+    margin: 0 auto;
   }
 }

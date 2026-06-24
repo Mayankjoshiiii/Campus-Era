@@ -1,0 +1,30 @@
+.wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner {
+    transition: none;
+    transform: none !important;
+  }
+  .glare {
+    display: none;
+  }
+}

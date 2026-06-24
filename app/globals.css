@@ -154,3 +154,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .delay4 { animation-delay: 0.4s !important; transition-delay: 0.4s !important; }
 .delay5 { animation-delay: 0.5s !important; transition-delay: 0.5s !important; }
 .delay6 { animation-delay: 0.6s !important; transition-delay: 0.6s !important; }
+
+/* 3D depth utilities */
+.depth3d {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroReveal,
+  .reveal,
+  .clipReveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

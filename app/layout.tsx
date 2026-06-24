@@ -1,6 +1,7 @@
 import { Inter, Instrument_Sans, Caveat } from "next/font/google"; // Updated fonts
 import "./globals.css";
 import DarkModeProvider from "@/components/DarkModeProvider";
+import FloatingScene from "@/components/FloatingScene";
 
 // Inter for body text
 const inter = Inter({ 
@@ -37,7 +38,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {  return (
     <html lang="en" className={`${inter.variable} ${instrument.variable} ${caveat.variable}`} suppressHydrationWarning>
       <body>
-        <DarkModeProvider>{children}</DarkModeProvider>
+        <DarkModeProvider>
+          <FloatingScene />
+          {children}
+        </DarkModeProvider>
       </body>
     </html>
   );

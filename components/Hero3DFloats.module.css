@@ -1,0 +1,155 @@
+.container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  perspective: 1400px;
+  overflow: visible;
+}
+
+.floatCard {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(14, 17, 26, 0.75);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transform-style: preserve-3d;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.emoji {
+  font-size: 1.6rem;
+  transform: translateZ(20px);
+}
+
+.label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.card1 {
+  top: 8%;
+  left: 4%;
+  transform: rotateY(18deg) rotateX(8deg) translateZ(30px);
+}
+
+.card2 {
+  top: 15%;
+  right: 5%;
+  transform: rotateY(-22deg) rotateX(-6deg) translateZ(50px);
+  border-color: rgba(245, 158, 11, 0.2);
+  animation-delay: 0.5s;
+}
+
+.card3 {
+  bottom: 12%;
+  left: 8%;
+  transform: rotateY(12deg) rotateX(-10deg) translateZ(40px);
+  animation-delay: 1s;
+}
+
+.phoneFrame {
+  position: absolute;
+  bottom: -20px;
+  right: 6%;
+  width: 160px;
+  height: 320px;
+  padding: 10px;
+  background: linear-gradient(145deg, #1a1f2e 0%, #0a0c12 100%);
+  border-radius: 28px;
+  border: 2px solid rgba(45, 212, 191, 0.2);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(45, 212, 191, 0.08);
+  transform: rotateY(-28deg) rotateX(12deg) translateZ(80px);
+  animation: phoneFloat 7s ease-in-out infinite;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #0E111A 0%, #181D2A 100%);
+  border-radius: 20px;
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow: hidden;
+}
+
+.phoneHeader {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-align: center;
+}
+
+.phoneLine {
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  width: 80%;
+}
+
+.phoneLineShort {
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  width: 50%;
+}
+
+.phoneCard {
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.12);
+  margin-top: 0.25rem;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: rotateY(var(--ry, 18deg)) rotateX(var(--rx, 8deg)) translateZ(30px) translateY(0); }
+  50% { transform: rotateY(var(--ry, 18deg)) rotateX(var(--rx, 8deg)) translateZ(50px) translateY(-14px); }
+}
+
+@keyframes phoneFloat {
+  0%, 100% { transform: rotateY(-28deg) rotateX(12deg) translateZ(80px) translateY(0); }
+  50% { transform: rotateY(-32deg) rotateX(8deg) translateZ(100px) translateY(-18px); }
+}
+
+.card2 {
+  --ry: -22deg;
+  --rx: -6deg;
+}
+
+.card3 {
+  --ry: 12deg;
+  --rx: -10deg;
+}
+
+@media (max-width: 1100px) {
+  .phoneFrame { display: none; }
+  .card2 { right: 2%; }
+}
+
+@media (max-width: 768px) {
+  .container { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floatCard, .phoneFrame {
+    animation: none !important;
+  }
+}

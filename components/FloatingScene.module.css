@@ -1,0 +1,153 @@
+.scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  --mx: 0px;
+  --my: 0px;
+  --rx: 0deg;
+  --ry: 0deg;
+}
+
+.orbit {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  perspective: 1400px;
+  transform: translate3d(var(--mx), var(--my), 0) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shape {
+  position: absolute;
+  transform-style: preserve-3d;
+  border-radius: 24px;
+  opacity: 0.55;
+  filter: blur(0.5px);
+}
+
+.cube {
+  width: 120px;
+  height: 120px;
+  top: 12%;
+  left: 8%;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(45, 212, 191, 0.02));
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  transform: rotateX(35deg) rotateY(-25deg) translateZ(80px);
+  animation: floatCube 14s ease-in-out infinite;
+  box-shadow: 0 30px 60px rgba(45, 212, 191, 0.08);
+}
+
+.ring {
+  width: 180px;
+  height: 180px;
+  top: 55%;
+  right: 6%;
+  border-radius: 50%;
+  border: 2px solid rgba(245, 158, 11, 0.25);
+  background: transparent;
+  transform: rotateX(60deg) rotateZ(15deg) translateZ(40px);
+  animation: floatRing 18s ease-in-out infinite reverse;
+  box-shadow: inset 0 0 40px rgba(245, 158, 11, 0.06);
+}
+
+.sphere {
+  width: 90px;
+  height: 90px;
+  top: 28%;
+  right: 22%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(45, 212, 191, 0.35), rgba(45, 212, 191, 0.02));
+  transform: translateZ(120px);
+  animation: floatSphere 11s ease-in-out infinite 1s;
+  box-shadow: 0 20px 50px rgba(45, 212, 191, 0.12);
+}
+
+.pyramid {
+  width: 0;
+  height: 0;
+  bottom: 18%;
+  left: 18%;
+  border-left: 55px solid transparent;
+  border-right: 55px solid transparent;
+  border-bottom: 95px solid rgba(245, 158, 11, 0.08);
+  transform: rotateY(45deg) rotateX(20deg) translateZ(60px);
+  animation: floatPyramid 16s ease-in-out infinite 0.5s;
+  filter: drop-shadow(0 20px 30px rgba(245, 158, 11, 0.1));
+}
+
+.glow1,
+.glow2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.glow1 {
+  width: 420px;
+  height: 420px;
+  top: -80px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.glow2 {
+  width: 360px;
+  height: 360px;
+  bottom: 10%;
+  right: -40px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+  animation: pulseGlow 10s ease-in-out infinite reverse;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+  transform: perspective(800px) rotateX(55deg) scale(1.4) translateY(-15%);
+  opacity: 0.4;
+}
+
+@keyframes floatCube {
+  0%, 100% { transform: rotateX(35deg) rotateY(-25deg) translateZ(80px) translateY(0); }
+  50% { transform: rotateX(45deg) rotateY(-35deg) translateZ(100px) translateY(-20px); }
+}
+
+@keyframes floatRing {
+  0%, 100% { transform: rotateX(60deg) rotateZ(15deg) translateZ(40px); }
+  50% { transform: rotateX(50deg) rotateZ(30deg) translateZ(70px) translateY(-15px); }
+}
+
+@keyframes floatSphere {
+  0%, 100% { transform: translateZ(120px) translateY(0); }
+  50% { transform: translateZ(140px) translateY(-25px); }
+}
+
+@keyframes floatPyramid {
+  0%, 100% { transform: rotateY(45deg) rotateX(20deg) translateZ(60px); }
+  50% { transform: rotateY(60deg) rotateX(30deg) translateZ(90px) translateY(-12px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@media (max-width: 768px) {
+  .cube, .pyramid { display: none; }
+  .ring { width: 120px; height: 120px; }
+  .sphere { width: 60px; height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit, .shape, .glow1, .glow2 {
+    animation: none !important;
+    transition: none !important;
+  }
+}

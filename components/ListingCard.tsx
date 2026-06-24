@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Tilt3D from "@/components/Tilt3D";
 import styles from "./ListingCard.module.css";
 
 // -------------------- TYPES --------------------
@@ -65,6 +66,7 @@ export default function ListingCard(props: ListingCardProps) {
   const areaName = item.location.split(",")[0].trim();
 
   return (
+    <Tilt3D maxTilt={16} scale={1.04} className={styles.tiltWrap}>
     <Link href={href} className={`${styles.card} ${isPg ? styles.pgCard : styles.messCard}`}>
       <div className={styles.imgWrap}>
         <img
@@ -117,5 +119,6 @@ export default function ListingCard(props: ListingCardProps) {
         </div>
       </div>
     </Link>
+    </Tilt3D>
   );
 }
